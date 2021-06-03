@@ -21,7 +21,8 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-            'address' => 'required'
+            'address' => 'required',
+            'type' => 'required'
         ]);
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
@@ -31,6 +32,7 @@ class UserController extends Controller
         $user->email = $input['email'];
         $user->password = $input['password'];
         $user->address = $input['address'];
+        $user->type = $input['type'];
         $user->save();
 
         return redirect()->route('user.index')->with('success', 'User has been created successfully');
@@ -50,14 +52,16 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-            'address' => 'required'
+            'address' => 'required',
+            'type' => 'required'
         ]);
 
         $input = $request->all();
         $user->name = $input['name'];
         $user->email = $input['email'];
         $user->password = Hash::make($input['password']);
-        $user->address = $request->address;
+        $user->address = $input['address'];
+        $user->type = $input['type'];
         
         $user->save();
         return redirect()->route('user.index')->with('success', 'User has been edited successfully');
