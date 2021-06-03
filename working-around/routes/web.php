@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+/*--------------   User routes   ---------------*/
+Route::get('user/create', [UserController::class, 'createPage'])->name('user.create'); // route for redirecting to user create page
+
+Route::post('user', [UserController::class, 'insert'])->name('user.insert'); // route for posting user into the DB
+
+Route::get('user/{user}/edit', [UserController::class, 'editPage'])->name('user.edit');
+
+Route::put('user/{user}', [UserController::class, 'update'])->name('user.update'); // route for updating user in the DB
+
+Route::delete('user/{user}', [UserController::class, 'remove'])->name('user.remove'); // route for removing the user from the DB
+

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateServicoTables extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('servico_tables', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            //$table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->text('address');
             $table->string('type');
-            //$table->rememberToken();
+            $table->integer('worker_id');
+            $table->integer('client_id');
+            $table->timestamp('date');
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('servico_tables');
     }
 }
