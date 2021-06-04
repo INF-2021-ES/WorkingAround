@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +22,10 @@ Route::get('/', function () {
 
 
 /*--------------   User routes   ---------------*/
-Route::get('user/create', [UserController::class, 'createPage'])->name('user.create'); // route for redirecting to user create page
+
+// Create index
+
+Route::get('user/create', [UserController::class, 'createPage'])->name('user.create'); // route for redirecting to user_create page
 
 Route::post('user', [UserController::class, 'insert'])->name('user.insert'); // route for posting user into the DB
 
@@ -30,7 +35,18 @@ Route::put('user/{user}', [UserController::class, 'update'])->name('user.update'
 
 Route::delete('user/{user}', [UserController::class, 'remove'])->name('user.remove'); // route for removing the user from the DB
 
+/*--------------   Category routes   ---------------*/
+Route::get('category/', [CategoryController::class, 'indexPage'])->name('category.index'); // Category Index
 
+Route::get('category/create', [CategoryController::class, 'createPage'])->name('category.create'); // route for creating form
+
+Route::post('category', [CategoryController::class, 'insert'])->name('category.insert'); // route for posting category into the DB
+
+Route::get('category/{category}/edit', [CategoryController::class, 'editPage'])->name('category.edit'); // route for redirecting to category_edit page
+
+Route::get('category/{category}', [CategoryController::class, 'update'])->name('category.update');
+
+Route::delete('category/{category}', [CategoryController::class, 'delete'])->name('category.delete');
 /*-------------------- Home --------------------*/
 Auth::routes();
 
