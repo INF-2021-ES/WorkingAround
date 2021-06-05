@@ -3,31 +3,43 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class JobController extends Controller
 {
-    // Show all jobs. Front-end developer should only show the ones from the user
+    // Shows jobs from the logged in user, in this case, from worker
     public function indexPage()
     {
-        $jobs = Job::all();
+        $workerId = Auth::id();
+        $jobs = DB::table('job')->where('worker_id', '=', $workerId)->get();
         return view('jobs.index', ['jobs' => $jobs]);
     }
 
-    // Return jobs form page
-    public function createPage()
+    // Must receive the service object as a parameter 
+    // in order to get all the info about it
+    // As soon as the worker accepts the job, it must be hiden from the public 
+    public function acceptService(Service $service)
     {
-        return view('jobs.create');
+        DB::table('service')->where('id', '=', $service->id)->update(
+            array('reserved' => true)
+        );
+        DB::table('job')->where('service_id', '=', $service->id)->update(
+            array('accepted' => true)
+        );
+        return redirect()->route('jobs.index');
     }
 
-    // Insert job into the DB
-    public function insert(Request $request, User $user)
+    // If the worker rejects the service, it must go back to public and delete from his own jobs
+    public function denyService(Service $service)
     {
-        $data = $request->all();
-        $category_id = DB::table('category')->select('category_id')->where('name', '=', $data['category']);
-        $worker_id = $user->id;
-        
+        DB::table('service')->where('id', '=', $service->id)->update(
+            array('reserved' => false)
+        );
+        DB::table('job')->where('service_id', '=', $service->id)->delete();
+        return redirect()->route('jobs.index');
     }
 }

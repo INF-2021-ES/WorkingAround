@@ -12,13 +12,13 @@ class CategoryController extends Controller
     public function indexPage()
     {
         $categories = Category::orderBy('name', 'ASC')->paginate();
-        return view('category.index', ['categories' => $categories]);
+        return view('categories.index', ['categories' => $categories]);
     }
 
     // Return categories form page
     public function createPage()
     {
-        return view('category.create');
+        return view('categories.create');
     }
 
     // Insert category into the DB
@@ -27,13 +27,13 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name = $request->name;
         $category->save();
-        return redirect()->route('category.index');
+        return redirect()->route('categories.index');
     }
 
     // Return edit page for a specific category
     public function editPage(Category $category)
     {
-        return view('category.edit', ['category' => $category]);
+        return view('categories.edit', ['category' => $category]);
     }
 
 
@@ -42,19 +42,18 @@ class CategoryController extends Controller
     {
         $category->name = $request->name;
         $category->save();
-        return redirect()->route('category.index');
+        return redirect()->route('categories.index');
     }
 
 
     /* Delete category from the database. When we delete a category
-        it's better to delete the jobs as well, since 
-        the category doesn't exists anymore*/
+        it's better to delete all the services as well, since 
+        the category doesn't exist anymore */
     public function delete(Category $category)
     {
         $id = $category->id;
-        DB::table('job')->where('category_id', $id)->delete();
-        $category->delete();
-        return redirect()->route('category.index');
+        DB::table('service')->where('category_id', '=', $id)->delete();
+        return redirect()->route('categories.index');
     }
 
 

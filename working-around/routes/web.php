@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -35,18 +37,39 @@ Route::put('user/{user}', [UserController::class, 'update'])->name('user.update'
 
 Route::delete('user/{user}', [UserController::class, 'remove'])->name('user.remove'); // route for removing the user from the DB
 
-/*--------------   Category routes   ---------------*/
-Route::get('category/', [CategoryController::class, 'indexPage'])->name('category.index'); // Category Index
+/*--------------   Categories routes   ---------------*/
 
-Route::get('category/create', [CategoryController::class, 'createPage'])->name('category.create'); // route for creating form
+Route::get('categories/', [CategoryController::class, 'indexPage'])->name('categories.index');
 
-Route::post('category', [CategoryController::class, 'insert'])->name('category.insert'); // route for posting category into the DB
+Route::get('categories/create', [CategoryController::class, 'createPage'])->name('categories.create');
 
-Route::get('category/{category}/edit', [CategoryController::class, 'editPage'])->name('category.edit'); // route for redirecting to category_edit page
+Route::post('category', [CategoryController::class, 'insert'])->name('categories.insert');
 
-Route::get('category/{category}', [CategoryController::class, 'update'])->name('category.update');
+Route::get('categories/edit', [CategoryController::class, 'editPage'])->name('categories.edit');
 
-Route::delete('category/{category}', [CategoryController::class, 'delete'])->name('category.delete');
+Route::put('categories/{id}/update', [CategoryController::class, 'update'])->name('categories.update');
+
+Route::delete('categories/{id}/delete', [CategoryController::class, 'delete'])->name('categories.delete');
+
+/*--------------   Services routes   ---------------*/
+Route::get('categories/{category}/services/', [ServiceController::class, 'indexPage'])->name('services.index');
+
+Route::get('categories/{category}/services/create', [ServiceController::class, 'createPage'])->name('services.create');
+
+Route::post('categories/{category}/service', [ServiceController::class, 'insert'])->name('services.insert');
+
+Route::post('categories/{category}/services/{id}', [ServiceController::class, 'reserve'])->name('services.reserve');
+
+
+/*--------------   Jobs routes   ---------------*/
+Route::get('user/jobs/', [JobController::class, 'indexPage'])->name('jobs.index');
+
+Route::post('user/jobs/{id}/accept', [JobController::class, 'acceptService'])->name('jobs.accept');
+
+Route::put('user/jobs/{id}/accept', [JobController::class, 'acceptService'])->name('jobs.accept');
+
+Route::match(['put', 'delete'], '/user/jobs/{id}/deny', [JobController::class, 'denyService'])->name('jobs.deny');
+
 /*-------------------- Home --------------------*/
 Auth::routes();
 
