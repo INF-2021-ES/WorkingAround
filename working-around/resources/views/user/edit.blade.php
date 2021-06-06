@@ -3,7 +3,7 @@
 <div class="container">
     <form method="POST" action="{{route('user.update', $user->id)}}">
         @csrf
-        @method('update')
+        @method('put')
         <div class="row">
             <div class="col-mid-12">
                 <div class="form-group">
