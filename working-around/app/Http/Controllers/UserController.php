@@ -12,6 +12,12 @@ use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
+    public function indexPage()
+    {
+        return view('users.index');
+    }
+
+
     // Create user
     public function createPage()
     {
