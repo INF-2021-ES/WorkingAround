@@ -43,6 +43,7 @@
                             <li><a href="{{route('login')}}" class="nav_link">{{__('Sign In')}}</a></li>
                             <li><a href="{{route('register')}}" class="nav_link">{{__('Register')}}</a></li>
                         @else
+                            <li><a class="nav-link" href="{{route('jobs.index')}}">My Jobs</a></li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{Auth::user()->name}}<span class="caret"></span>
