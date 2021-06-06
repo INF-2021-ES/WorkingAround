@@ -37,15 +37,12 @@
             </tr>
         </table>
         <a class="btn btn-primary" href="{{route('user.edit', $user->id)}}">Edit</a>
-        @can('create-service') <!-- Worker -->
-            <a class="btn btn-danger"href="{{route('user.removeWorker')}}">Delete</a> 
-        @endcan
-        @can('reserve-service') <!-- Client -->
-            <a class="btn btn-danger"href="{{route('user.removeClient')}}">Delete</a> 
-        @endcan
-        @can('create-category') <!-- Admin -->
-            <a class="btn btn-danger"href="{{route('user.removeClient')}}">Delete</a> <!-- Client methods works in admin -->
-        @endcan
+        
+        @if(auth()->user()->can('create-service')) <!-- Worker -->
+        <a class="btn btn-danger"href="{{route('user.removeWorker')}}">Delete</a> 
+        @else <!-- Admin or Client-->
+        <a class="btn btn-danger"href="{{route('user.removeClient')}}">Delete</a> <!-- Client method works in admin -->
+    @endif
     </div>
 </div>
 @endsection
