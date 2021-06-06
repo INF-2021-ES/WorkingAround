@@ -5,6 +5,14 @@
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <h2>User Details</h2>
+                <img src="{{ asset('img/profile_pic.png') }}" alt="profile_icon">
+                <style>
+                    img {
+                        height: 100px;
+                        width: 100px;
+                        margin-left: 20px;
+                    }
+                </style> 
             </div>
         </div>
     </div>
