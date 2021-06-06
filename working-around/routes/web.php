@@ -36,8 +36,9 @@ Route::get('user/{user}/edit', [UserController::class, 'editPage'])->name('user.
 
 Route::put('user/{user}/update', [UserController::class, 'update'])->name('user.update'); // route for updating user in the DB
 
-Route::delete('user/{id}/remove', [UserController::class, 'remove'])->name('user.remove'); // route for removing the user from the DB
+Route::delete('user/{id}/remove', [UserController::class, 'remove'])->name('user.removeWorker'); // route for removing the worker from the DB
 
+Route::delete('user/{id}/remove/', [UserController::class, 'remove'])->name('user.removeClient'); // route for removing the client from the DB
 /*--------------   Categories routes   ---------------*/
 
 Route::get('categories/', [CategoryController::class, 'indexPage'])->name('categories.index');

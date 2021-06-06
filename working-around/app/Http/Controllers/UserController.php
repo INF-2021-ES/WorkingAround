@@ -97,10 +97,34 @@ class UserController extends Controller
     }
 
 
-    // Delete user
-    public function remove($id)
+    // Delete user, if we delete user, we also have to delete in jobs and services table
+    public function removeWorker()
     {
-        User::find($id)->delete();
-        return redirect()->route('user.index')->with('success', 'User has been deleted');
+        $hasJobs = false;
+        try {
+            //code...
+            DB::table('jobs')->where('worker_id', '=', Auth::id())->delete();
+            $hasJobs = true;
+        } catch (\Throwable $th) {
+            if (!$hasJobs) {
+                DB::table('users')->where('id', '=', Auth::id())->delete();
+            }
+        }
+        if ($hasJobs) {
+            DB::table('service')->where('worker_id', '=', Auth::id())->delete(); 
+            DB::table('users')->where('id', '=', Auth::id())->delete();   
+        }
+        return redirect()->route('user.index')->with('success', 'Worker has been deleted');
+    }
+
+    public function removeClient()
+    {
+        try {
+            DB::table('jobs')->where('client_id', '=', Auth::id())->delete();
+            DB::table('users')->where('id', '=', Auth::id())->delete();
+        } catch (\Throwable $th) {
+            DB::table('users')->where('id', '=', Auth::id())->delete();
+        }
+        return redirect()->route('user.index')->with('success', 'Client has been deleted');
     }
 }
