@@ -12,7 +12,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <b>Name</b>
-            {{$user->$name}}
+            {{$user->name}}
         </div>
     </div>
 
@@ -20,13 +20,6 @@
         <div class="form-group">
             <b>E-Mail</b>
             {{$user->email}}
-        </div>
-    </div>
-
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <b>Password</b>
-            {{$user->password}}
         </div>
     </div>
 
