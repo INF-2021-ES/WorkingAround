@@ -27,6 +27,7 @@ Route::get('/', function () {
 
 // Create index
 Route::get('user/', [UserController::class, 'indexPage'])->name('user.index');
+
 Route::get('user/create', [UserController::class, 'createPage'])->name('user.create'); // route for redirecting to user_create page
 
 Route::post('user', [UserController::class, 'insert'])->name('user.insert'); // route for posting user into the DB
