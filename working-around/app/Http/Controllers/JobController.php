@@ -15,7 +15,11 @@ class JobController extends Controller
     public function indexPage()
     {
         $workerId = Auth::id();
-        $jobs = DB::table('job')->where('worker_id', '=', $workerId)->get();
+        try {
+            $jobs = DB::table('job')->where('worker_id', '=', $workerId)->get();
+        } catch (\Throwable $th) {
+            return view('jobs.index', ['jobs' => null]);
+        }
         return view('jobs.index', ['jobs' => $jobs]);
     }
 
