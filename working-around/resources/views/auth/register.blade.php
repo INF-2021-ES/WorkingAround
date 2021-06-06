@@ -62,7 +62,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('address') }}</label>
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
                             <div class="col-md-6">
                                 <input id="address" type="text" class="form-control" name="address" required>
@@ -70,12 +70,17 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="roles" class="col-md-4 col-form-label text-md-right">{{ __('roles') }}</label>
-
+                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Roles') }}</label>
+                        <!--
                             <div class="col-md-6">
                                 <input id="roles" type="text" class="form-control" name="roles" required>
                             </div>
-                        </div>
+                        </div> -->
+
+                        <select name="roles" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            <option value="1">Client</option>
+                            <option value="2">Worker</option>
+                        </select>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
