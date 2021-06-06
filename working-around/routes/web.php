@@ -47,9 +47,9 @@ Route::post('category', [CategoryController::class, 'insert'])->name('categories
 
 Route::get('categories/edit', [CategoryController::class, 'editPage'])->name('categories.edit');
 
-Route::put('categories/{id}/update', [CategoryController::class, 'update'])->name('categories.update');
+Route::put('categories/{category}/update', [CategoryController::class, 'update'])->name('categories.update');
 
-Route::delete('categories/{id}/delete', [CategoryController::class, 'delete'])->name('categories.delete');
+Route::delete('categories/{category}/delete', [CategoryController::class, 'delete'])->name('categories.delete');
 
 /*--------------   Services routes   ---------------*/
 Route::get('categories/{category}/services/', [ServiceController::class, 'indexPage'])->name('services.index');
@@ -64,7 +64,6 @@ Route::post('categories/{category}/services/{id}', [ServiceController::class, 'r
 /*--------------   Jobs routes   ---------------*/
 Route::get('user/jobs/', [JobController::class, 'indexPage'])->name('jobs.index');
 
-Route::post('user/jobs/{id}/accept', [JobController::class, 'acceptService'])->name('jobs.accept');
 
 Route::put('user/jobs/{id}/accept', [JobController::class, 'acceptService'])->name('jobs.accept');
 

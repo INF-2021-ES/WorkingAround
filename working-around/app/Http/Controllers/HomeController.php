@@ -26,7 +26,11 @@ class HomeController extends Controller
     public function index()
     {
         $workerId = Auth::id();
-        $myServices = DB::table('services')->where('id', '=', $workerId)->get();
+        try {
+            $myServices = DB::table('services')->where('id', '=', $workerId)->get();
+        } catch (\Throwable $th) {
+            return view('home');
+        }
         return view('home', ['services' => $myServices]);
     }
 }
