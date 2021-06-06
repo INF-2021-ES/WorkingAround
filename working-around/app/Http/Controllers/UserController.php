@@ -44,8 +44,9 @@ class UserController extends Controller
     }
 
     // Show User Edit page
-    public function editPage(User $user)
+    public function editPage($id)
     {
+        $user = DB::table('users')->where('id', '=', $id)->first();
         return view('user.edit', ['user' => $user]); 
         // Return a form page for editing 
     }
