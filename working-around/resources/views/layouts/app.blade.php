@@ -40,8 +40,8 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{route('login')}}" class="nav_link">{{__('Sign In')}}</a></li>
-                            <li><a href="{{route('register')}}" class="nav_link">{{__('Register')}}</a></li>
+                            <li><a href="{{route('login')}}" class="nav_link px-2">{{__('Sign In')}}</a></li>
+                            <li><a href="{{route('register')}}" class="nav_link px-2">{{__('Register')}}</a></li>
                         @else
                             <li><a class="nav-link" href="{{route('jobs.index')}}">My Jobs</a></li>
                             <li class="nav-item dropdown">
@@ -51,7 +51,7 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{route('user.index')}}" onclick="event.preventDefault();document.getElementById('profile').submit()">Profile</a>
                                     <form id="profile" action="{{route('user.index')}}" method="GET">@csrf</form>
-                                    <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit()">Logout</a>
+                                    <a class="dropdown-item danger" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit()">Logout</a>
                                     <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none">@csrf</form>
                                 </div>
                             </li>

@@ -1,40 +1,44 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    <form method="POST" action="{{route('user.update', $user->id)}}">
-        @csrf
-        @method('put')
-        <div class="row">
-            <div class="col-mid-12">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" required name="name" id="name" value="{{$user->name}}">
-                </div>
-            </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Edit') }}</div>
 
-            <div class="col-mid-12">
-                <div class="form-group">
-                    <label for="E-Mail">Email</label>
-                    <input type="text" required name="email" id="email" value="{{$user->email}}">
-                </div>
-            </div>
-
-            <div class="col-mid-12">
-                <div class="form-group">
-                    <label for="address">Address</label>
-                    <input type="text" required name="address" id="address" value="{{$user->address}}">
-                </div>
-            </div>
-
-            <div class="col-mid-12">
-                <div class="form-group">
-                    <label for="roles">Roles</label>
-                    <input type="text" required name="roles" id="roles" value="{{$user->roles}}">
+                <div class="card-body">
+                    <form method="POST" action="{{route('user.update', $user->id)}}">
+                        @csrf
+                        @method('put')
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" required autocomplete="name" name="name" value="{{$user->name}}" autofocus>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+                            <div class="col-md-6">
+                                <input id="email" type="text" class="form-control" required autocomplete="email" name="email" value="{{$user->email}}" autofocus>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Adress') }}</label>
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control" required autocomplete="address" name="address" value="{{$user->address}}" autofocus>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="roles" class="col-md-4 col-form-label text-md-right">{{ __('Roles') }}</label>
+                            <div class="col-md-6">
+                                <input id="roles" type="text" class="form-control" required autocomplete="roles" name="roles" value="{{$user->roles}}" autofocus>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-4">Save</button>
+                    </form>
                 </div>
             </div>
         </div>
-
-        <button type="submit" class="btn btn-primary mt-4">Save</button>
-    </form>
+    </div>
 </div>
 @endsection
