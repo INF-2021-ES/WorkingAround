@@ -52,8 +52,9 @@ class UserController extends Controller
     }
 
     // Function to update the user in the DB
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        /*
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
@@ -73,6 +74,25 @@ class UserController extends Controller
         $user->update($input);
         DB::table('model_has_roles')->where('model-id', $id)->delete();
         $user->assignRole($request->input('roles'));
+        return redirect()->route('user.index')->with('success', 'User has been edited successfully');
+        */
+
+        $data = $request->all();
+        if (!empty($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+            DB::table('users')->where('id', '=', Auth::id())->update(
+                array('password' => $data['password'])
+            );
+        }
+        else {
+            $data = Arr::except($data, array('password'));
+        }
+        DB::table('users')->where('id', '=', Auth::id())->update(
+            array('name' => $data['name'],
+            'email' => $data['email'],
+            'address' => $data['address'],
+            'roles' => $data['roles'])
+        );
         return redirect()->route('user.index')->with('success', 'User has been edited successfully');
     }
 

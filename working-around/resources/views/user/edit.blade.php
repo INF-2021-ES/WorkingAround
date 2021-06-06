@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    <form method="POST" action="{{route('user.edit', $user->id)}}">
+    <form method="POST" action="{{route('user.update', $user->id)}}">
         @csrf
         @method('put')
         <div class="row">
@@ -21,7 +21,7 @@
 
             <div class="col-mid-12">
                 <div class="form-group">
-                    <label for="address">Adress</label>
+                    <label for="address">Address</label>
                     <input type="text" required name="address" id="address" value="{{$user->address}}">
                 </div>
             </div>
