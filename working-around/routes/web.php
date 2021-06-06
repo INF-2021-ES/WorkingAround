@@ -30,13 +30,13 @@ Route::get('user/', [UserController::class, 'indexPage'])->name('user.index');
 
 Route::get('user/create', [UserController::class, 'createPage'])->name('user.create'); // route for redirecting to user_create page
 
-Route::post('user', [UserController::class, 'insert'])->name('user.insert'); // route for posting user into the DB
+Route::post('user/insert', [UserController::class, 'insert'])->name('user.insert'); // route for posting user into the DB
 
 Route::get('user/{user}/edit', [UserController::class, 'editPage'])->name('user.edit');
 
-Route::put('user/{user}', [UserController::class, 'update'])->name('user.update'); // route for updating user in the DB
+Route::put('user/{user}/update', [UserController::class, 'update'])->name('user.update'); // route for updating user in the DB
 
-Route::delete('user/{user}', [UserController::class, 'remove'])->name('user.remove'); // route for removing the user from the DB
+Route::delete('user/{id}/remove', [UserController::class, 'remove'])->name('user.remove'); // route for removing the user from the DB
 
 /*--------------   Categories routes   ---------------*/
 
