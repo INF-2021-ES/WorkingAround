@@ -52,7 +52,7 @@ Route::get('categories/edit', [CategoryController::class, 'editPage'])->name('ca
 
 Route::put('categories/{category}/update', [CategoryController::class, 'update'])->name('categories.update');
 
-Route::delete('categories/{category}/delete', [CategoryController::class, 'delete'])->name('categories.delete');
+Route::match(['delete', 'get'], 'categories/{category}/delete', [CategoryController::class, 'delete'])->name('categories.delete');
 
 /*--------------   Services routes   ---------------*/
 Route::get('categories/{category}/services/', [ServiceController::class, 'indexPage'])->name('services.index');
@@ -76,13 +76,4 @@ Route::match(['put', 'delete'], '/user/jobs/{id}/deny', [JobController::class, '
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-/*
-Route::group(['middleware'=>['auth']], function () {
-    Route::resource('roles',RoleController::class);
-    Route::resource('users',UserController::class);
-    Route::resource('job',JobController::class);
-    Route::resource('category', CategoryController::class);
-    Route::resource('service', CategoryController::class);
-});*/
 
