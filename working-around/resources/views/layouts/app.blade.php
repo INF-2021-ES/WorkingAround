@@ -51,7 +51,7 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{route('user.index')}}" onclick="event.preventDefault();document.getElementById('profile').submit()">Profile</a>
                                     <form id="profile" action="{{route('user.index')}}" method="GET">@csrf</form>
-                                    <a class="dropdown-item danger" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit()">Logout</a>
+                                    <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit()">Logout</a>
                                     <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none">@csrf</form>
                                 </div>
                             </li>
@@ -68,8 +68,8 @@
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
         <div class="row">
           <div class="col-12 col-md">
-            <img class="mb-2" src="Pricing%20example%20%C2%B7%20Bootstrap%20v5.0_files/bootstrap-logo.svg" alt="" width="24" height="19">
-            <small class="d-block mb-3 text-muted">© 2017–2021</small>
+            <img class="mb-2" src="img/working_around_icon_round_login.png" alt="" width="150px" height="150px">
+            <!--<small class="d-block mb-3 text-muted">© 2017–2021</small>-->
           </div>
           <div class="col-6 col-md">
             <h5>Features</h5>
