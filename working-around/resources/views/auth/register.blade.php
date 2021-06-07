@@ -78,8 +78,8 @@
                         </div> -->
 
                         <select name="roles" class="form-select form-select-sm" aria-label=".form-select-sm example">
-                            <option value="1">Client</option>
-                            <option value="2">Worker</option>
+                            <option value="client">Client</option>
+                            <option value="worker">Worker</option>
                         </select>
 
                         <div class="form-group row mb-0">

@@ -31,18 +31,13 @@
                 <th>Address</th>
                 <td>{{$user->address}}</td>
             </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{$user->roles}}</td>
-            </tr>
         </table>
         <a class="btn btn-primary" href="{{route('user.edit', $user->id)}}">Edit</a>
-        
-        @if(auth()->user()->can('create-service')) <!-- Worker -->
-        <a class="btn btn-danger"href="{{route('user.removeWorker')}}">Delete</a> 
+         @if(auth()->user()->can('create-service')) <!-- Worker -->
+            <a class="btn btn-danger"href="{{route('user.removeWorker',  $user->id)}}">Delete</a> 
         @else <!-- Admin or Client-->
-        <a class="btn btn-danger"href="{{route('user.removeClient')}}">Delete</a> <!-- Client method works in admin -->
-    @endif
+            <a class="btn btn-danger"href="{{route('user.removeClient',  $user->id)}}">Delete</a> <!-- Client method works in admin -->
+        @endif
     </div>
 </div>
 @endsection

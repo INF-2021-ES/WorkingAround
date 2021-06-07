@@ -28,13 +28,6 @@ class UserController extends Controller
     // Insert user into the DB
     public function insert(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'address' => 'required',
-            'roles' => 'required'
-        ]);
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         
