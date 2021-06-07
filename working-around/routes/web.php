@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
+use App\Models\Job;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -36,9 +37,9 @@ Route::get('user/{user}/edit', [UserController::class, 'editPage'])->name('user.
 
 Route::put('user/{user}/update', [UserController::class, 'update'])->name('user.update'); // route for updating user in the DB
 
-Route::delete('user/{id}/remove', [UserController::class, 'removeWorker'])->name('user.removeWorker'); // route for removing the worker from the DB
+Route::match(['delete', 'get'], 'user/{id}/remove', [UserController::class, 'removeWorker'])->name('user.removeWorker'); // route for removing the worker from the DB
 
-Route::delete('user/{id}/remove/', [UserController::class, 'removeClient'])->name('user.removeClient'); // route for removing the client from the DB
+Route::match(['delete', 'get'], 'user/{id}/remove/', [UserController::class, 'removeClient'])->name('user.removeClient'); // route for removing the client from the DB
 /*--------------   Categories routes   ---------------*/
 
 Route::get('categories/', [CategoryController::class, 'indexPage'])->name('categories.index');
@@ -75,3 +76,13 @@ Route::match(['put', 'delete'], '/user/jobs/{id}/deny', [JobController::class, '
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+/*
+Route::group(['middleware'=>['auth']], function () {
+    Route::resource('roles',RoleController::class);
+    Route::resource('users',UserController::class);
+    Route::resource('job',JobController::class);
+    Route::resource('category', CategoryController::class);
+    Route::resource('service', CategoryController::class);
+});*/
+

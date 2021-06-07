@@ -96,33 +96,33 @@ class UserController extends Controller
 
 
     // Delete user, if we delete user, we also have to delete in jobs and services table
-    public function removeWorker()
+    public function removeWorker($id)
     {
         $hasJobs = false;
         try {
             //code...
-            DB::table('jobs')->where('worker_id', '=', Auth::id())->delete();
+            DB::table('jobs')->where('worker_id', '=', $id)->delete();
             $hasJobs = true;
         } catch (\Throwable $th) {
-            if (!$hasJobs) { // In case there's an error, delete only 
-                DB::table('users')->where('id', '=', Auth::id())->delete();
+            if (!$hasJobs) { // In case there's an error, delete only user
+                DB::table('users')->where('id', '=', $id)->delete();
             }
         }
         if ($hasJobs) {
-            DB::table('service')->where('worker_id', '=', Auth::id())->delete(); 
-            DB::table('users')->where('id', '=', Auth::id())->delete();   
+            DB::table('service')->where('worker_id', '=', $id)->delete(); 
+            DB::table('users')->where('id', '=', $id)->delete();   
         }
-        return redirect()->route('user.index')->with('success', 'Worker has been deleted');
+        return redirect()->route('home')->with('success', 'Worker has been deleted');
     }
 
-    public function removeClient()
+    public function removeClient($id)
     {
         try {
-            DB::table('jobs')->where('client_id', '=', Auth::id())->delete();
-            DB::table('users')->where('id', '=', Auth::id())->delete();
+            DB::table('jobs')->where('client_id', '=', $id)->delete();
+            DB::table('users')->where('id', '=', $id)->delete();
         } catch (\Throwable $th) {
-            DB::table('users')->where('id', '=', Auth::id())->delete();
+            DB::table('users')->where('id', '=', $id)->delete();
         }
-        return redirect()->route('user.index')->with('success', 'Client has been deleted');
+        return redirect()->route('home')->with('success', 'Client has been deleted');
     }
 }
