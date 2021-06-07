@@ -104,7 +104,7 @@ class UserController extends Controller
             DB::table('jobs')->where('worker_id', '=', Auth::id())->delete();
             $hasJobs = true;
         } catch (\Throwable $th) {
-            if (!$hasJobs) {
+            if (!$hasJobs) { // In case there's an error, delete only 
                 DB::table('users')->where('id', '=', Auth::id())->delete();
             }
         }
