@@ -89,8 +89,7 @@ class UserController extends Controller
         DB::table('users')->where('id', '=', Auth::id())->update(
             array('name' => $data['name'],
             'email' => $data['email'],
-            'address' => $data['address'],
-            'roles' => $data['roles'])
+            'address' => $data['address'])
         );
         return redirect()->route('user.index')->with('success', 'User has been edited successfully');
     }

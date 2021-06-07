@@ -28,12 +28,6 @@
                                 <input id="address" type="text" class="form-control" required autocomplete="address" name="address" value="{{$user->address}}" autofocus>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="roles" class="col-md-4 col-form-label text-md-right">{{ __('Roles') }}</label>
-                            <div class="col-md-6">
-                                <input id="roles" type="text" class="form-control" required autocomplete="roles" name="roles" value="{{$user->roles}}" autofocus>
-                            </div>
-                        </div>
                         <button type="submit" class="btn btn-primary mt-4">Save</button>
                     </form>
                 </div>

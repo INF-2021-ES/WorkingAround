@@ -27,7 +27,6 @@ class PermissionTableSeeder extends Seeder
         $client = Role::create(['name' => 'client']);
         $client->givePermissionTo('reserve-service');
 
-        $admin = Role::create(['name' => 'admin']);
-        $admin->givePermissionTo('create-category');
+        
     }
 }
