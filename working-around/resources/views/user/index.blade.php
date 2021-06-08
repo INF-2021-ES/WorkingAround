@@ -32,12 +32,12 @@
                 <td>{{$user->address}}</td>
             </tr>
         </table>
-        <a class="btn btn-primary" href="{{route('user.edit', $user->id)}}">Edit</a>
-         @if(auth()->user()->can('create-service')) <!-- Worker -->
-            <a class="btn btn-danger"href="{{route('user.removeWorker',  $user->id)}}">Delete</a> 
-        @else <!-- Admin or Client-->
-            <a class="btn btn-danger"href="{{route('user.removeClient',  $user->id)}}">Delete</a> <!-- Client method works in admin -->
-        @endif
+        <a class="btn btn-primary" href="{{route('user.edit', Auth::id())}}">Edit</a>
+        @can('create-service')           
+            <a class="btn btn-danger"href="{{route('user.removeWorker',  Auth::id())}}">Delete</a> 
+        @else
+            <a class="btn btn-danger"href="{{route('user.removeClient',  Auth::id())}}">Delete</a> <!-- Client method works in admin -->
+        @endcan
     </div>
 </div>
 @endsection

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-
+use Illuminate\Database\QueryException;
 class UserController extends Controller
 {
     public function indexPage()
@@ -118,10 +118,10 @@ class UserController extends Controller
     public function removeClient($id)
     {
         try {
-            DB::table('jobs')->where('client_id', '=', $id)->delete();
-            DB::table('users')->where('id', '=', $id)->delete();
+            DB::table('jobs')->where('client_id', '=', Auth::id())->delete();
+            DB::table('users')->where('id', '=', Auth::id())->delete();
         } catch (\Throwable $th) {
-            DB::table('users')->where('id', '=', $id)->delete();
+            DB::table('users')->where('id', '=', Auth::id())->delete();
         }
         return redirect()->route('home')->with('success', 'Client has been deleted');
     }

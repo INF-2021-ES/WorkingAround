@@ -16,7 +16,7 @@ class PermissionTableSeeder extends Seeder
     public function run()
     {
         //
-
+        
         Permission::create(['name' => 'create-service']);
         Permission::create(['name' => 'reserve-service']);
         Permission::create(['name' => 'create-category']);

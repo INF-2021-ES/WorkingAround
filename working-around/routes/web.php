@@ -37,9 +37,9 @@ Route::get('user/{user}/edit', [UserController::class, 'editPage'])->name('user.
 
 Route::put('user/{user}/update', [UserController::class, 'update'])->name('user.update'); // route for updating user in the DB
 
-Route::match(['delete', 'get'], 'user/{id}/remove', [UserController::class, 'removeWorker'])->name('user.removeWorker'); // route for removing the worker from the DB
+Route::match(['delete', 'get'], 'user/{id}/removew/', [UserController::class, 'removeWorker'])->name('user.removeWorker'); // route for removing the worker from the DB
 
-Route::match(['delete', 'get'], 'user/{id}/remove/', [UserController::class, 'removeClient'])->name('user.removeClient'); // route for removing the client from the DB
+Route::match(['delete', 'get'], 'user/{id}/removec/', [UserController::class, 'removeClient'])->name('user.removeClient'); // route for removing the client from the DB
 /*--------------   Categories routes   ---------------*/
 
 Route::get('categories/', [CategoryController::class, 'indexPage'])->name('categories.index');
@@ -67,10 +67,11 @@ Route::post('categories/{category}/services/{id}', [ServiceController::class, 'r
 /*--------------   Jobs routes   ---------------*/
 Route::get('user/jobs/', [JobController::class, 'indexPage'])->name('jobs.index');
 
+Route::get('user/jobs/{id}', [JobController::class, 'showJob'])->name('job.show');
 
-Route::put('user/jobs/{id}/accept', [JobController::class, 'acceptService'])->name('jobs.accept');
+Route::put('user/jobs/{id}/accept', [JobController::class, 'acceptService'])->name('job.accept');
 
-Route::match(['put', 'delete'], '/user/jobs/{id}/deny', [JobController::class, 'denyService'])->name('jobs.deny');
+Route::match(['put', 'delete'], '/user/jobs/{id}/decline', [JobController::class, 'declineService'])->name('job.decline');
 
 /*-------------------- Home --------------------*/
 Auth::routes();

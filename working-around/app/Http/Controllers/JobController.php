@@ -16,7 +16,10 @@ class JobController extends Controller
     {
         $workerId = Auth::id();
         try {
-            $jobs = DB::table('job')->where('worker_id', '=', $workerId)->get();
+            $jobs = DB::table('job')
+            ->join('users', 'id', '=', $workerId)
+            ->get();
+            //$jobs = DB::table('job')->where('worker_id', '=', $workerId)->get();
         } catch (\Throwable $th) {
             return view('jobs.index', ['jobs' => null]);
         }
@@ -38,12 +41,18 @@ class JobController extends Controller
     }
 
     // If the worker rejects the service, it must go back to public and delete from his own jobs
-    public function denyService(Service $service)
+    public function declineService(Service $service)
     {
         DB::table('service')->where('id', '=', $service->id)->update(
             array('reserved' => false)
         );
         DB::table('job')->where('service_id', '=', $service->id)->delete();
         return redirect()->route('jobs.index');
+    }
+
+    public function showJob($id)
+    {
+        $job = DB::table('job')->where('id', '=', $id)->get();
+        return view('jobs.show', ['job' => $job]);
     }
 }
