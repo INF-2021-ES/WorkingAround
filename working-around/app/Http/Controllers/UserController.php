@@ -99,9 +99,10 @@ class UserController extends Controller
     public function removeWorker($id)
     {
         $hasJobs = false;
+        
         try {
             //code...
-            DB::table('jobs')->where('worker_id', '=', $id)->delete();
+            DB::table('job')->where('worker_id', '=', $id)->delete();
             $hasJobs = true;
         } catch (\Throwable $th) {
             if (!$hasJobs) { // In case there's an error, delete only user
@@ -118,7 +119,7 @@ class UserController extends Controller
     public function removeClient($id)
     {
         try {
-            DB::table('jobs')->where('client_id', '=', Auth::id())->delete();
+            DB::table('job')->where('client_id', '=', Auth::id())->delete();
             DB::table('users')->where('id', '=', Auth::id())->delete();
         } catch (\Throwable $th) {
             DB::table('users')->where('id', '=', Auth::id())->delete();
