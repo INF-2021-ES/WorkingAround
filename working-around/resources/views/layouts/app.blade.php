@@ -61,7 +61,7 @@
             </div>
         </nav>
 
-        <main>
+        <main id="main">
             @yield('content')
         </main>
         <footer class="bg-dark text-center text-white">
@@ -81,3 +81,9 @@
     </div>
 </body>
 </html>
+
+<style>
+    #main {
+        background-color:gray;
+    }
+</style>
