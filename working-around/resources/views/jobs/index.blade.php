@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
+<div class="container my-4">
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <h2>My Jobs</h2>

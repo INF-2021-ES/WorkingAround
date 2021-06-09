@@ -1,9 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
+    <div class="container my-4">
         <div class="col">
-            <br />
-
             <table class='table table-bordered'>
                 <tr>
                     <th>Client</th>
