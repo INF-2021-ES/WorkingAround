@@ -4,7 +4,7 @@
 
         @foreach ($services as $service)
         <div class="card" style="width: 18rem;">
-            <img src="./public/img/imagem_{{$service->name}}.jpg" class="card-img-top" alt="...">
+            <img src="img/imagem_{{$service->name}}.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{$service->name}}</h5>
               <p class="card-text">{{$service->description}}</p>

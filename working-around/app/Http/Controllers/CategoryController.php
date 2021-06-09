@@ -11,7 +11,8 @@ class CategoryController extends Controller
     // Get all available categories from the DB and send them into category.index page
     public function indexPage()
     {
-        $categories = DB::table('category')->orderBy('name', 'asc')->join('service', 'category.id', '=', 'service.category_id')->limit(1)->get();
+        $categories = DB::table('category')->orderBy('name', 'asc')->get();
+        //$categories = DB::table('category')->orderBy('name', 'asc')->join('service', 'category.id', '=', 'service.category_id')->get();
         return view('categories.index', ['categories' => $categories]);
     }
 
