@@ -16,9 +16,9 @@ class JobController extends Controller
     {
         if (JobController::hasJobs() && JobController::hasAcceptedJobs()) {
             $toAccept = DB::table('job')->join('service', 'job.service_id', '=', 'service.id')->where('job.workerId', '=', Auth::id())->where('job.accepted', '=', false)->get();
-            echo('has to accept');
+            echo('has to accept       ');
             $accepted = DB::table('job')->join('service', 'job.service_id', '=', 'service.id')->where('job.workerId', '=', Auth::id())->where('job.accepted', '=', true)->get();
-            echo('has accepted');
+            echo('       has accepted');
             return view('jobs.index', ['jobs' => $toAccept, 'accepted' => $accepted]);
         }
         elseif (JobController::hasJobs() && !JobController::hasAcceptedJobs()) {
@@ -35,8 +35,11 @@ class JobController extends Controller
     private static function hasAcceptedJobs()
     {
         try {
-            DB::table('job')->where('workerId', '=', Auth::id())->where('accepted', '=', true)->first(); // only needs at least one to return true
-            return true;
+            $valor = DB::table('job')->where('workerId', '=', Auth::id())->where('accepted', '=', true)->first();
+            if ($valor->accepted) {
+                return true;
+            }
+            return false; // only needs at least one to return true
         } catch (\Throwable $th) {
             return false;
         }
@@ -45,8 +48,11 @@ class JobController extends Controller
     private static function hasJobs()
     {
         try {
-            DB::table('job')->where('workerId', '=', Auth::id())->where('accepted', '=', false)->first(); // only needs at least one to return true
-            return true;
+            $valor = DB::table('job')->where('workerId', '=', Auth::id())->where('accepted', '=', false)->first();
+            if (!$valor->accepted) {
+                return true;
+            } // only needs at least one to return true     
+            return false;   
         } catch (\Throwable $th) {
             return false;
         }

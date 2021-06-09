@@ -26,10 +26,6 @@
                         <td>{{$job->price}}</td>
                         <td>
                             <a class="btn btn-primary" href="{{route('job.show', $job->id)}}">Show</a>
-                            @can('create-service')
-                                    <a class="btn btn-success" href="{{route('job.accept', $job->id)}}">Accept</a>
-                                    <a class="btn btn-danger" href="{{route('job.decline', $job->id)}}">Decline</a>
-                            @endcan
                         </td>
                     </tr>             
                 @endforeach            
@@ -97,10 +93,6 @@
                             <td>{{$acceptedJob->price}}</td>
                             <td>
                                 <a class="btn btn-primary" href="{{route('job.show', $acceptedJob->id)}}">Show</a>
-                                @can('create-service')
-                                        <a class="btn btn-success" href="{{route('job.accept', $acceptedJob->id)}}">Accept</a>
-                                        <a class="btn btn-danger" href="{{route('job.decline', $acceptedJob->id)}}">Decline</a>
-                                @endcan
                             </td>
                         </tr>               
                 @endforeach            
