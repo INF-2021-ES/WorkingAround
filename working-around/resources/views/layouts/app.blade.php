@@ -23,6 +23,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
+                <div class="mr-3">´
+                    <img src="/img/working_around_icon_round_login.png" alt="logo" width="50px" height="50px">
+                </div>
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Working Around') }}
                 </a>
@@ -33,7 +36,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li><a href="{{ url('/') }}" class="nav_link px-2 text-white">{{__('Home')}}</a></li>
+                        <li><a href="{{route('categories.index')}}" class="nav_link px-2 text-white">{{__('Categories')}}</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -42,14 +46,15 @@
                         @guest
                             <li><a href="{{route('login')}}" class="nav_link px-2 text-white">{{__('Log In')}}</a></li>
                             <li><a href="{{route('register')}}" class="nav_link px-2 text-white">{{__('Register')}}</a></li>
-                        @else                       
-                            <li><a class="nav-link" href="{{route('jobs.index')}}">My Jobs</a></li>
+                        @else                 
+                            <li></li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{Auth::user()->name}}<span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{route('user.index')}}" onclick="event.preventDefault();document.getElementById('profile').submit()">Profile</a>
+                                    <a class="dropdown-item" href="{{route('jobs.index')}}">Jobs</a>
                                     <form id="profile" action="{{route('user.index')}}" method="GET">@csrf</form>
                                     <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit()">Logout</a>
                                     <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none">@csrf</form>
