@@ -11,7 +11,7 @@ class CategoryController extends Controller
     // Get all available categories from the DB and send them into category.index page
     public function indexPage()
     {
-        $categories = Category::orderBy('name', 'ASC')->paginate();
+        $categories = DB::table('category')->orderBy('name', 'asc')->get();
         return view('categories.index', ['categories' => $categories]);
     }
 
@@ -38,10 +38,11 @@ class CategoryController extends Controller
 
 
     // Update category in the DB
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        $category->name = $request->name;
-        $category->save();
+        DB::table('category')->where('id', '=', $id)->update(
+            array('name' => $request->name)
+        );
         return redirect()->route('categories.index');
     }
 
