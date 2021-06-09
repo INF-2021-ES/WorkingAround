@@ -206,16 +206,15 @@ $('#myCarousel .carousel-item img').on('click', function(e) {
   if (src) $(this).ekkoLightbox();
 });
     </script>
-  <div class="jumbotron">
-    <h1 class="display-4">Bem-Vindo ao Working Around</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <div class="jumbotron mb-0">
+    <h1 class="display-2">Bem-Vindo ao Working Around</h1>
+    <p class="lead">A plataforma que permite facilitar o dia a dia de cada um , aqui podera de uma maneira facil e rapida encomendar qualquer serviço que pretenda tendo em conta sempre os melhores preços.
+      Aqui tera o melhor serviço ao domicilio que podera encontrar, procuramos sempre o melhor atendimento e o melhor serviço.
+    </p>
     <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <p>Working Around trabalhe connosco!</p>
     <p class="lead">
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+      <a class="btn btn-primary btn-lg" href="{{route('categories.index')}}" role="button">Explorar Categorias</a>
     </p>
   </div>
-<div class="container">
-
-</div>
 @endsection
