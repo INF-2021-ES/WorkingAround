@@ -33,11 +33,11 @@
             </tr>
         </table>
         <a class="btn btn-primary" href="{{route('user.edit', Auth::id())}}">Edit</a>
-        @can('create-service')           
+        @if (auth()->user()->can('create-service'))            
             <a class="btn btn-danger"href="{{route('user.removeWorker',  Auth::id())}}">Delete</a> 
         @else
-            <a class="btn btn-danger"href="{{route('user.removeClient',  Auth::id())}}">Delete</a> <!-- Client method works in admin -->
-        @endcan
+            <a class="btn btn-danger"href="{{route('user.removeClient',  Auth::id())}}">Delete</a> <!-- Client method works in admin -->           
+        @endif
     </div>
 </div>
 @endsection

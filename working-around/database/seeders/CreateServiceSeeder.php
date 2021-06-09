@@ -36,10 +36,10 @@ class CreateServiceSeeder extends Seeder
         DB::table('service')->insert([
             'id' => 3,
             'category_id' => 1,
-            'worker_id' => 4,
+            'worker_id' => 3,
             'description' => 'Electrician',
             'price' => 30,
-            'reserved' => false
+            'reserved' => true
         ]);
 
         DB::table('service')->insert([

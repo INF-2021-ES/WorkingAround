@@ -53,28 +53,6 @@ class UserController extends Controller
     // Function to update the user in the DB
     public function update(Request $request)
     {
-        /*
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'address' => 'required',
-            'roles' => 'required'
-        ]);
-
-        $input = $request->all();
-        if (!empty($input['password'])) {
-            $input['password'] = Hash::make($input['password']);
-        }
-        else {
-            $input = Arr::except($input, array('password'));
-        }
-        $user = User::find($id);
-        $user->update($input);
-        DB::table('model_has_roles')->where('model-id', $id)->delete();
-        $user->assignRole($request->input('roles'));
-        return redirect()->route('user.index')->with('success', 'User has been edited successfully');
-        */
 
         $data = $request->all();
         if (!empty($data['password'])) {

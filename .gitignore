@@ -1,2 +1,4 @@
 
 working-around/.env.example
+working-around/composer.json
+working-around/composer.lock

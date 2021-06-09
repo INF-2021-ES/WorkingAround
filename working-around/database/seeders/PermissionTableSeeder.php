@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -27,6 +27,8 @@ class PermissionTableSeeder extends Seeder
         $client = Role::create(['name' => 'client']);
         $client->givePermissionTo('reserve-service');
 
+        $admin = Role::create(['name' => 'admin']);
+        $admin->givePermissionTo('create-category');
         
     }
 }

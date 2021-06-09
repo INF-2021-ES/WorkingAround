@@ -16,8 +16,8 @@ class CreateJobTable extends Migration
         Schema::create('job', function (Blueprint $table) {
             $table->id();
             $table->integer('service_id');
-            $table->integer('worker_id');
-            $table->integer('client_id');
+            $table->integer('workerId');
+            $table->integer('clientId');
             $table->boolean('accepted');
         });
     }
