@@ -5,10 +5,11 @@
             @foreach ($categories as $category)
                 <div class="col">
                     <div class="card h-100">
-                    <img src="/img/image1.jpg" class="card-img-top" alt="...">
+                    <img src="img/imagem_{{$category->name}}.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{$category->name}}</h5>
                         <p class="card-text">{{$category->description}}</p>
+                        <a href='{{route('categories.show', $category->category_id)}}' class="btn btn-primary btn-lg btn-block">Show</a>
                     </div>
                     </div>
                 </div>

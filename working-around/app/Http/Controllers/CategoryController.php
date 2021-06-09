@@ -11,16 +11,21 @@ class CategoryController extends Controller
     // Get all available categories from the DB and send them into category.index page
     public function indexPage()
     {
-        $categories = DB::table('category')->orderBy('name', 'asc')->get();
+        $categories = DB::table('category')->orderBy('name', 'asc')->join('service', 'category.id', '=', 'service.category_id')->limit(1)->get();
         return view('categories.index', ['categories' => $categories]);
     }
 
-    // Return categories form page
+    // Return categories form page (ADMIN ONLY)
     public function createPage()
     {
         return view('categories.create');
     }
 
+    public function showCategory($id)
+    {
+        $services = DB::table('service')->where('category_id', '=', $id)->join('category', 'service.category_id', '=', 'category.id')->where('service.reserved', '=', false)->get();
+        return view('categories.show', ['services' => $services]);
+    }
     // Insert category into the DB
     public function insert(Request $request)
     {
