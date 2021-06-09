@@ -81,9 +81,3 @@
     </div>
 </body>
 </html>
-
-<style>
-    #main {
-        background-color:gray;
-    }
-</style>
