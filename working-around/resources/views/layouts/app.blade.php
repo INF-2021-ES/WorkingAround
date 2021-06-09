@@ -40,8 +40,8 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{route('login')}}" class="nav_link px-2">{{__('Log In')}}</a></li>
-                            <li><a href="{{route('register')}}" class="nav_link px-2">{{__('Register')}}</a></li>
+                            <li><a href="{{route('login')}}" class="nav_link px-2 text-white">{{__('Log In')}}</a></li>
+                            <li><a href="{{route('register')}}" class="nav_link px-2 text-white">{{__('Register')}}</a></li>
                         @else                       
                             <li><a class="nav-link" href="{{route('jobs.index')}}">My Jobs</a></li>
                             <li class="nav-item dropdown">

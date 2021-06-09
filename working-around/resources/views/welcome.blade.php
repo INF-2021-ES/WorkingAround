@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<br>
-<br>
-<div class="cont center">
+<div class="container mt-4">
 <div id="demo" class="carousel slide" data-ride="carousel">
 
   <!-- Indicators -->
@@ -34,42 +32,39 @@
   </a>
 
 </div>
-<br>
-<br>
 </div>
-  <div class="cont center">
-    <div class="jumbotron mb-0">
-      <h1 class="display-2">Bem-Vindo ao Working Around</h1>
+  <div class="container mt-4">
+    <div class="jumbotron mb-4">
+      <h1 class="display-4">Bem-Vindo ao Working Around</h1>
       <p class="lead">A plataforma que permite facilitar o dia a dia de cada um , aqui podera de uma maneira facil e rapida encomendar qualquer serviço que pretenda tendo em conta sempre os melhores preços.
         Aqui tera o melhor serviço ao domicilio que podera encontrar, procuramos sempre o melhor atendimento e o melhor serviço.
       </p>
       <hr class="my-4">
-      <p>Working Around já a trabalhar connosco!</p>
+      <div class="d-flex justify-content-center">
+        <p>Working Around já a trabalhar connosco!</p>
+      </div>
       <p class="lead">
-        <a class="btn btn-primary btn-lg" href="{{route('categories.index')}}" role="button">Explorar Categorias</a>
+        <a class="btn btn-primary btn-lg center" href="{{route('categories.index')}}" role="button">Explorar Categorias</a>
       </p>
     </div>
   </div>
-  <br>
-<br>
+  <style>
+    #img{
+      height:500px;
+      width:1100px;
+      object-center:center;
+    }
+    #cont{
+      object-fit: contain;
+    }
+    .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+  .cont{
+    width:1800px;!important
+  }
+  </style>
 @endsection
-
-<style>
-  #img{
-    height:500px;
-    width:1100px;
-    object-center:center;
-  }
-  #cont{
-    object-fit: contain;
-  }
-  .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-.cont{
-  width:1800px;!important
-}
-</style>
