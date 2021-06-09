@@ -18,5 +18,15 @@ class CreateCategorySeeder extends Seeder
             'id' => 1,
             'name' => 'Electrician'
         ]);
+
+        DB::table('category')->insert([
+            'id' => 2,
+            'name' => 'Carpenter'
+        ]);
+
+        DB::table('category')->insert([
+            'id' => 3,
+            'name' => 'Chef'
+        ]);
     }
 }

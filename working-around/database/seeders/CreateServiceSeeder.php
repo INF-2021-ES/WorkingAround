@@ -50,5 +50,23 @@ class CreateServiceSeeder extends Seeder
             'price' => 30,
             'reserved' => false
         ]);
+
+        DB::table('service')->insert([
+            'id' => 5,
+            'category_id' => 2,
+            'worker_id' => 4,
+            'description' => 'Carpenter Description',
+            'price' => 30,
+            'reserved' => false
+        ]);
+
+        DB::table('service')->insert([
+            'id' => 6,
+            'category_id' => 3,
+            'worker_id' => 3,
+            'description' => 'Chef',
+            'price' => 69,
+            'reserved' => false
+        ]);
     }
 }
