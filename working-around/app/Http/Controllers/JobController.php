@@ -16,9 +16,7 @@ class JobController extends Controller
     {
         if (JobController::hasJobs() && JobController::hasAcceptedJobs()) {
             $toAccept = DB::table('job')->join('service', 'job.service_id', '=', 'service.id')->where('job.workerId', '=', Auth::id())->where('job.accepted', '=', false)->get();
-            echo('has to accept       ');
             $accepted = DB::table('job')->join('service', 'job.service_id', '=', 'service.id')->where('job.workerId', '=', Auth::id())->where('job.accepted', '=', true)->get();
-            echo('       has accepted');
             return view('jobs.index', ['jobs' => $toAccept, 'accepted' => $accepted]);
         }
         elseif (JobController::hasJobs() && !JobController::hasAcceptedJobs()) {
@@ -35,11 +33,11 @@ class JobController extends Controller
     private static function hasAcceptedJobs()
     {
         try {
-            $valor = DB::table('job')->where('workerId', '=', Auth::id())->where('accepted', '=', true)->first();
+            $valor = DB::table('job')->where('workerId', '=', Auth::id())->where('accepted', '=', true)->first(); // only needs at least one to return true
             if ($valor->accepted) {
                 return true;
             }
-            return false; // only needs at least one to return true
+            return false; 
         } catch (\Throwable $th) {
             return false;
         }
@@ -48,10 +46,10 @@ class JobController extends Controller
     private static function hasJobs()
     {
         try {
-            $valor = DB::table('job')->where('workerId', '=', Auth::id())->where('accepted', '=', false)->first();
+            $valor = DB::table('job')->where('workerId', '=', Auth::id())->where('accepted', '=', false)->first(); // only needs at least one to return true 
             if (!$valor->accepted) {
                 return true;
-            } // only needs at least one to return true     
+            }  
             return false;   
         } catch (\Throwable $th) {
             return false;
