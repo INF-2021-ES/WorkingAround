@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm" id="nav">
             <div class="container">
                 <div class="mr-3" id="logo-container">
-                    <img src="/img/working_around_icon_round_login.png" alt="logo" width="50px" height="50px">
+                    <img src="/img/working_around_icon_round_login.png" alt="logo" width="50px" height="50px" id="imgCima">
                 </div>
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Working Around') }}
@@ -85,3 +85,20 @@
     </div>
 </body>
 </html>
+
+<style>
+    #nav{
+        height: 80px;!important
+    }
+    #imgCima{
+        height: 50px;!important
+        width: 50px;!important
+        
+    }
+    #logo-container{
+        height: 50px;!important
+        width: 50px;!important
+        object-fit: fill;
+    }
+
+</style>

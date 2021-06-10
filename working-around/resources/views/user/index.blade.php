@@ -5,9 +5,9 @@
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <h2>User Details</h2>
-                <img src="{{ asset('img/profile_pic.png') }}" alt="profile_icon">
+                <img src="{{ asset('img/profile_pic.png') }}" alt="profile_icon" id="profile">
                 <style>
-                    img {
+                    #profile {
                         height: 100px;
                         width: 100px;
                         margin-left: 20px;
@@ -45,4 +45,9 @@
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
 @endsection
