@@ -40,10 +40,10 @@
       </p>
       <hr class="my-4">
       <div class="d-flex justify-content-center">
-        <p>Working Around start working with us now!</p>
+        <p>Working Around jรก a trabalhar connosco!</p>
       </div>
       <p class="lead">
-        <a class="btn btn-primary btn-lg center" href="{{route('categories.index')}}" role="button">Explore Categories</a>
+        <a class="btn btn-primary btn-lg center" href="{{route('categories.index')}}" role="button">Explorar Categorias</a>
       </p>
     </div>
   </div>
