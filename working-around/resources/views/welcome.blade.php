@@ -35,15 +35,15 @@
 </div>
   <div class="container mt-4">
     <div class="jumbotron mb-4">
-      <h1 class="display-4">Bem-Vindo ao Working Around</h1>
-      <p class="lead">A plataforma que permite facilitar o dia a dia de cada um. Aqui poderá de uma maneira fácil e rápida encomendar qualquer serviço que pretenda ao melhor preço e serviço ao domicilio. Procurámos sempre o melhor serviço e atendimento!
+      <h1 class="display-4">Welcome to Working Around</h1>
+      <p class="lead">The platform that makes everyone&#8217s day to day life easier. Here you will be able to request any available service faster and easier with the best prices and the best home service you can find on the market. We strive to ensure that you have the best communication client to worker and vice-versa.
       </p>
       <hr class="my-4">
       <div class="d-flex justify-content-center">
-        <p>Working Around já a trabalhar connosco!</p>
+        <p>Working Around start working with us now!</p>
       </div>
       <p class="lead">
-        <a class="btn btn-primary btn-lg center" href="{{route('categories.index')}}" role="button">Explorar Categorias</a>
+        <a class="btn btn-primary btn-lg center" href="{{route('categories.index')}}" role="button">Explore Categories</a>
       </p>
     </div>
   </div>
