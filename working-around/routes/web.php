@@ -49,6 +49,7 @@ Route::get('categories/create', [CategoryController::class, 'createPage'])->name
 Route::post('category', [CategoryController::class, 'insert'])->name('categories.insert');
 
 Route::get('categories/{id}', [CategoryController::class, 'showCategory'])->name('categories.show');
+
 Route::get('categories/edit', [CategoryController::class, 'editPage'])->name('categories.edit');
 
 

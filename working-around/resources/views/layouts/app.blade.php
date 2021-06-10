@@ -36,7 +36,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li><a href="{{ url('/') }}" class="nav_link px-2 text-white">{{__('Home')}}</a></li>
                         <li><a href="{{route('categories.index')}}" class="nav_link px-2 text-white">{{__('Categories')}}</a></li>
                     </ul>
 
