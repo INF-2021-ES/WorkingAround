@@ -21,9 +21,9 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm" id="nav">
             <div class="container">
-                <div class="mr-3">´
+                <div class="mr-3" id="logo-container">
                     <img src="/img/working_around_icon_round_login.png" alt="logo" width="50px" height="50px">
                 </div>
                 <a class="navbar-brand" href="{{ url('/') }}">

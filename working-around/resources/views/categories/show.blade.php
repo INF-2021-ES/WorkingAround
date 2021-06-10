@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-  <div class="row">
+  <div class="container my-4">
         @foreach ($services as $service)
           <div class="col">
             <div class="card" style="width: 18rem;">
@@ -22,7 +22,7 @@
                     <a href="{{route('categoryService.reserve', $service->id)}}" class="btn btn-primary btn-block">Reserve service</a>
                   @else
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button  id="myInput" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                       Reserve service
                     </button>
 
