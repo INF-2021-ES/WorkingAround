@@ -40,16 +40,16 @@ class ServiceController extends Controller
 
     // this is only for the client, if the service is reserved 
     // it should be added into job table and set the service as reserved
-    public function reserve(Request $request, $id)
+    public function reserve($id)
     {
+        $service = DB::table('service')->where('id', '=', $id)->first();
         $clientId = Auth::id();
-        $workerId = DB::table('service')->select('worker_id')->where('id', '=', $id);
 
         DB::table('job')->insert(
-            array('service_id' => $id,
-            'worker_id' => $workerId,
+            array('service_id' => $service->id,
+            'worker_id' => $service->worker_id,
             'client_id' => $clientId,
-            'accepeted' => false)
+            'accepted' => false)
         );
 
         DB::table('service')->where('id', '=', $id)->update(

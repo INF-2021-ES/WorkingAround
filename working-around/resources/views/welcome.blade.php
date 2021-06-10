@@ -36,8 +36,7 @@
   <div class="container mt-4">
     <div class="jumbotron mb-4">
       <h1 class="display-4">Bem-Vindo ao Working Around</h1>
-      <p class="lead">A plataforma que permite facilitar o dia a dia de cada um , aqui podera de uma maneira facil e rapida encomendar qualquer serviço que pretenda tendo em conta sempre os melhores preços.
-        Aqui tera o melhor serviço ao domicilio que podera encontrar, procuramos sempre o melhor atendimento e o melhor serviço.
+      <p class="lead">A plataforma que permite facilitar o dia a dia de cada um. Aqui poderá de uma maneira fácil e rápida encomendar qualquer serviço que pretenda ao melhor preço e serviço ao domicilio. Procurámos sempre o melhor serviço e atendimento!
       </p>
       <hr class="my-4">
       <div class="d-flex justify-content-center">

@@ -50,6 +50,8 @@ Route::post('category', [CategoryController::class, 'insert'])->name('categories
 
 Route::get('categories/{id}', [CategoryController::class, 'showCategory'])->name('categories.show');
 
+Route::match(['put', 'get'], 'category/{id}/{service}', [ServiceController::class, 'reserve'])->name('categoryService.reserve');
+
 Route::get('categories/edit', [CategoryController::class, 'editPage'])->name('categories.edit');
 
 
@@ -65,7 +67,7 @@ Route::get('categories/{category}/services/create', [ServiceController::class, '
 
 Route::post('categories/{category}/service', [ServiceController::class, 'insert'])->name('services.insert');
 
-Route::post('categories/{category}/services/{id}', [ServiceController::class, 'reserve'])->name('services.reserve');
+//Route::post('categories/{category}/services/{id}', [ServiceController::class, 'reserve'])->name('services.reserve');
 
 
 /*--------------   Jobs routes   ---------------*/

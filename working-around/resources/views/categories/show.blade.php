@@ -16,9 +16,9 @@
                   <span>{{$service->price}} €</span>
                 </p>
                 @guest
-                <a href="{{route('')}}" class="btn btn-primary btn-block">Register to make a reservation</a>
+                <a href="{{route('login')}}" class="btn btn-primary btn-block">Login to make a reservation</a>
                 @else               
-                  <a href="{{route('register')}}" class="btn btn-primary btn-block">Reserve service</a>
+                  <a href="{{route('categoryService.reserve', $service->id)}}" class="btn btn-primary btn-block">Reserve service</a>
                 @endguest
                
               </div>
