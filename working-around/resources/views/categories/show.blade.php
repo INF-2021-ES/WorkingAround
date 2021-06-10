@@ -1,5 +1,11 @@
 @extends('layouts.app')
+@section('pageTitle', 'Services')
 @section('content')
+  <div class="container my-4">
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-primary btn-lg" href="{{route('services.index')}}" type="button">+ Create Service</button>
+      </div>
+  </div>
   <div class="container my-4">
         @foreach ($services as $service)
           <div class="col">
@@ -45,7 +51,6 @@
                     </div>          
                   @endif         
                 @endguest
-               
               </div>
             </div>
           </div>

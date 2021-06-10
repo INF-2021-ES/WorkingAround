@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pageTitle', 'Edit User')
 @section('content')
 <div class="container my-5">
     <div class="row justify-content-center">
@@ -23,7 +24,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Adress') }}</label>
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
                             <div class="col-md-6">
                                 <input id="address" type="text" class="form-control" required autocomplete="address" name="address" value="{{$user->address}}" autofocus>
                             </div>

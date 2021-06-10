@@ -3,6 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>@yield('pageTitle') - Working Around</title>
+
+    <!-- Icon -->
+    <link rel="icon" type="image/png" href="{{ asset('/img/working_around_icon_round_login.png') }}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

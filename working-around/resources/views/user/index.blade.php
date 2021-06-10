@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pageTitle', 'My Profile')
 @section('content')
 <div class="container my-5">
     <div class="row">

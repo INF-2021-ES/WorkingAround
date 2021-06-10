@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pageTitle', 'Home')
 @section('content')
 <div class="container mt-4">
 <div id="demo" class="carousel slide" data-ride="carousel">
@@ -51,10 +52,9 @@
     #img{
       height:500px;
       width:1100px;
-      object-center:center;
     }
     #cont{
-      object-fit: contain;
+      object-fit: none;
     }
     .center {
     display: block;
