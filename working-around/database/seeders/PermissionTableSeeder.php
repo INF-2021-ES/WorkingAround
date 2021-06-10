@@ -17,9 +17,9 @@ class PermissionTableSeeder extends Seeder
     {
         //
         
-        Permission::create(['name' => 'create-service']);
-        Permission::create(['name' => 'reserve-service']);
-        Permission::create(['name' => 'create-category']);
+        Permission::create(['name' => 'create-service']); // Worker
+        Permission::create(['name' => 'reserve-service']); // Client
+        Permission::create(['name' => 'create-category']); // Admin
 
         $worker = Role::create(['name' => 'worker']);
         $worker->givePermissionTo('create-service');
