@@ -3,7 +3,7 @@
 @section('content')
   <div class="container my-4">
     <div class="d-flex justify-content-center">
-        <button class="btn btn-primary btn-lg" href="{{route('services.index')}}" type="button">+ Create Service</button>
+        <button class="btn btn-primary btn-lg btn-block" href="#" type="button">+ Create Service</button>
       </div>
   </div>
   <div class="container my-4">
