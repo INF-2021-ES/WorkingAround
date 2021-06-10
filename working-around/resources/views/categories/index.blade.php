@@ -5,7 +5,7 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
             @foreach ($categories as $category)
                 <div class="col">
-                    <div class="card h-100">
+                    <div class="card h-100" id="carta">
                     <img src="img/{{$category->name}}.jpg" class="card-img-top" alt="..." id="cards">
                     <div class="card-body">
                         <h5 class="card-title">{{$category->name}}</h5>
