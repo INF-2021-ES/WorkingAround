@@ -26,7 +26,7 @@
                 <a href="{{route('login')}}" class="btn btn-primary btn-block">Login to make a reservation</a>
                 @else
                   @if (auth()->user()->can('reserve-service'))
-                    <a href="{{route('categoryService.reserve', $service->id)}}" class="btn btn-primary btn-block">Reserve service</a>
+                    <a href="{{route('category.reserve', ['category' => $service->category, 'id' => $service->id])}}" class="btn btn-primary btn-block">Reserve service</a>
                   @else
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">

@@ -39,22 +39,24 @@ class ServiceController extends Controller
 
     // this is only for the client, if the service is reserved 
     // it should be added into job table and set the service as reserved
-    public function reserve($id)
+
+
+    public function reserve($category, $id)
     {
         $service = DB::table('service')->where('id', '=', $id)->first();
         $clientId = Auth::id();
 
         DB::table('job')->insert(
             array('service_id' => $service->id,
-            'worker_id' => $service->worker_id,
-            'client_id' => $clientId,
+            'workerId' => $service->worker_id,
+            'clientId' => $clientId,
             'accepted' => false)
         );
 
         DB::table('service')->where('id', '=', $id)->update(
-            array('reserved', true)
+            ['reserved' => true]
         );
-        return redirect()->route('category.index'); // redirect client to categories
+        return redirect()->route('categories.index'); // redirect client to categories
     }
 
 

@@ -22,7 +22,7 @@ class CreateServiceSeeder extends Seeder
             'worker_id' => 3,
             'description' => 'Electrician',
             'price' => 30,
-            'reserved' => true
+            'reserved' => false
         ]);
         DB::table('service')->insert([
             'id' => 2,
@@ -30,7 +30,7 @@ class CreateServiceSeeder extends Seeder
             'worker_id' => 3,
             'description' => 'Electrician',
             'price' => 40,
-            'reserved' => true
+            'reserved' => false
         ]);
 
         DB::table('service')->insert([
@@ -39,7 +39,7 @@ class CreateServiceSeeder extends Seeder
             'worker_id' => 3,
             'description' => 'Electrician',
             'price' => 30,
-            'reserved' => true
+            'reserved' => false
         ]);
 
         DB::table('service')->insert([

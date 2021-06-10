@@ -49,7 +49,7 @@ Route::post('category', [CategoryController::class, 'insert'])->name('categories
 
 Route::get('categories/{id}', [CategoryController::class, 'showCategory'])->name('categories.show');
 
-Route::match(['put', 'get'], 'category/{id}/{service}', [ServiceController::class, 'reserve'])->name('categoryService.reserve');
+//Route::match(['put', 'get'], 'category/{id}/{service}', [ServiceController::class, 'reserve'])->name('categoryService.reserve');
 
 Route::get('categories/{id}/service', [ServiceController::class, 'createPage'])->name('service.create'); // service create page
 
@@ -60,6 +60,12 @@ Route::post('categories/{id}/service/', [ServiceController::class, 'insert'])->n
 Route::put('categories/{category}/update', [CategoryController::class, 'update'])->name('categories.update');
 
 Route::match(['delete', 'get'], 'categories/{category}/delete', [CategoryController::class, 'delete'])->name('categories.delete');
+
+
+
+
+
+Route::match(['put', 'get'],'categories/{category}/service/{id}', [ServiceController::class, 'reserve'])->name('category.reserve');
 
 
 
