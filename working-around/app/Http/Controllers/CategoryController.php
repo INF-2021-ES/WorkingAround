@@ -25,7 +25,7 @@ class CategoryController extends Controller
     public function showCategory($id)
     {
         $services = DB::table('service')->join('category', 'service.category_id', '=', 'category.id')->join('users', 'service.worker_id', '=', 'users.id')->where('service.reserved', '=', false)->where('category_id', '=', $id)->select('users.name as workerName', 'service.id as id', 'service.description as description', 'service.price as price', 'users.address as address')->get();
-        return view('categories.show', ['services' => $services]);
+        return view('categories.show', ['services' => $services, 'id' => $id]);
     }
     // Insert category into the DB
     public function insert(Request $request)

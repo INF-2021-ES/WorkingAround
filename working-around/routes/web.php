@@ -5,7 +5,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
-use App\Models\Job;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -52,20 +51,19 @@ Route::get('categories/{id}', [CategoryController::class, 'showCategory'])->name
 
 Route::match(['put', 'get'], 'category/{id}/{service}', [ServiceController::class, 'reserve'])->name('categoryService.reserve');
 
-Route::get('categories/edit', [CategoryController::class, 'editPage'])->name('categories.edit');
+Route::get('categories/{id}/service', [ServiceController::class, 'createPage'])->name('service.create'); // service create page
 
+Route::post('categories/{id}/service/', [ServiceController::class, 'insert'])->name('service.insert'); // service create method
 
+//Route::get('categories/edit', [CategoryController::class, 'editPage'])->name('categories.edit');
 
 Route::put('categories/{category}/update', [CategoryController::class, 'update'])->name('categories.update');
 
 Route::match(['delete', 'get'], 'categories/{category}/delete', [CategoryController::class, 'delete'])->name('categories.delete');
 
-/*--------------   Services routes   ---------------*/
-Route::get('categories/{category}/services/', [ServiceController::class, 'indexPage'])->name('services.index');
 
-Route::get('categories/{category}/services/create', [ServiceController::class, 'createPage'])->name('services.create');
 
-Route::post('categories/{category}/service', [ServiceController::class, 'insert'])->name('services.insert');
+
 
 //Route::post('categories/{category}/services/{id}', [ServiceController::class, 'reserve'])->name('services.reserve');
 

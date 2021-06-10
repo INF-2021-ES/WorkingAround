@@ -17,25 +17,24 @@ class ServiceController extends Controller
     }
 
     // Return services form page
-    public function createPage()
+    public function createPage($id)
     {
-        return view('services.create');
+        return view('services.create', ['id' => $id]);
     }
 
     // create service into the DB (from Worker)
-    public function insert(Request $request)
+    public function insert(Request $request, $id)
     {
-        $categoryName = $request->category;
-        $categoryId = DB::table('category')->select('id')->where('name', "=", $categoryName);
-        
-        $service = new Service();
-        $service->category_id = $categoryId;
-        $service->worker_id = Auth::id();
-        $service->description = $request->description;
-        $service->price = $request->price;
-        $service->reserved = false;
-        $service->save();
-        return redirect()->route('home'); 
+        $input = $request->all();
+        DB::table('service')->insert(
+            array('category_id' => $id,
+            'worker_id' => Auth::id(),
+            'description' => $input['description'],
+            'price' => $input['price'],
+            'reserved' => false)
+        );
+    
+        return redirect()->route('categories.index'); 
     }
 
     // this is only for the client, if the service is reserved 
