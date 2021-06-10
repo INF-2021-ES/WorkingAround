@@ -28,6 +28,8 @@
         width: 400px;!important
 
     }
-
+    #carta{
+        border:10px solid #f8f9fa;
+    }
 
 </style>
