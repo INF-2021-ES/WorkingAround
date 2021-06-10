@@ -9,7 +9,7 @@
   <div class="container my-5 center">
   <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach ($services as $service)
-          <div class="col">
+          <div class="col mb-4">
             <div class="card" style="width: 18rem;">
               <div class="card-body">
                 <h5 class="card-title">{{$service->workerName}}</h5>
@@ -58,18 +58,6 @@
         @endforeach
   </div>
   </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
 @endsection
 
 <style>

@@ -25,7 +25,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="h-100">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm" id="nav">
             <div class="container">
                 <div class="mr-3" id="logo-container">
@@ -82,7 +82,7 @@
             </div>
           </div>
         </div>
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <div class="text-center p-3 mb-0" style="background-color: rgba(0, 0, 0, 0.2);">
           <a class="text-white" href="https://workingaround.com/">workingaround.com</a>
           © 2021 Copyright
         </div>
@@ -103,13 +103,6 @@
         height: 50px;!important
         width: 50px;!important
         object-fit: fill;
-    }
-    .footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
     }
 
 </style>
