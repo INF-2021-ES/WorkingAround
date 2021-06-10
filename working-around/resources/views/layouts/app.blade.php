@@ -72,21 +72,21 @@
         <main id="main">
             @yield('content')
         </main>
-        <footer class="bg-dark text-center text-white">
-          <div class="container p-4 pb-0">
-            <div class="d-flex justify-content-center">
-              <img src="/img/working_around_icon_round_login.png" width="75px" height="75px">
-              <div class="d-flex align-items-center">
-                <h4 class="align-middle">Working Around</h4>
-              </div>
+    </div>
+    <footer class="bg-dark text-center text-white">
+        <div class="container p-4 pb-0">
+          <div class="d-flex justify-content-center">
+            <img src="/img/working_around_icon_round_login.png" width="75px" height="75px">
+            <div class="d-flex align-items-center">
+              <h4 class="align-middle">Working Around</h4>
             </div>
           </div>
-          <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            <a class="text-white" href="https://workingaround.com/">workingaround.com</a>
-            © 2021 Copyright
-          </div>
-        </footer>
-    </div>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          <a class="text-white" href="https://workingaround.com/">workingaround.com</a>
+          © 2021 Copyright
+        </div>
+      </footer>
 </body>
 </html>
 
@@ -103,6 +103,13 @@
         height: 50px;!important
         width: 50px;!important
         object-fit: fill;
+    }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
     }
 
 </style>
