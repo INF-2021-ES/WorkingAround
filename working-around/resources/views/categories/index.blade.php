@@ -29,7 +29,7 @@
 
     }
     #carta{
-        border-top:10px solid #f8f9fa;
+        border-top:10px solid #ffffff;
     }
 
 </style>
