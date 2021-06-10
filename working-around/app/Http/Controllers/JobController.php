@@ -65,6 +65,20 @@ class JobController extends Controller
         DB::table('job')->where('service_id', '=', $id)->update(
             array('accepted' => true)
         );
+        $serviceDb = DB::table('service')->where('id', '=', $id)->first();
+        
+        $service = new Service();
+        $service->id = $serviceDb->id;
+        $service->category_id = $serviceDb->category_id;
+        $service->worker_id = $serviceDb->worker_id;
+        $service->description = $serviceDb->description;
+        $service->price = $serviceDb->price;
+        $service->reserved = $serviceDb->reserved;
+
+        $job = DB::table('job')->where('id', '=', $id)->first();
+        $client = DB::table('users')->where('id', '=', $job->clientId)->first();
+        $worker = DB::table('users')->where('id', '=', $job->workerId)->first();
+        SendEmailController::sendEmail($service, $client->name, $client->email, $worker->name);
         return redirect()->route('jobs.index');
     }
 
