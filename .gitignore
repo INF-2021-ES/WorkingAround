@@ -7,3 +7,5 @@ working-around/.env.example
 package-lock.json
 working-around/.env.example
 working-around/.env.example
+working-around/.env.example
+*.example

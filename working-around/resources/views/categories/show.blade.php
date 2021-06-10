@@ -2,11 +2,12 @@
 @section('pageTitle', 'Services')
 @section('content')
   <div class="container my-4">
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center center">
         <a class="btn btn-primary btn-lg btn-block" href="{{route('service.create', $id)}}">+ Create Service</a>
       </div>
   </div>
-  <div class="container my-4">
+  <div class="container my-5 center">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach ($services as $service)
           <div class="col">
             <div class="card" style="width: 18rem;">
@@ -56,4 +57,18 @@
           </div>
         @endforeach
   </div>
+  </div>
+  <br>
+  <br>
+  <br>
 @endsection
+
+<style>
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+</style>

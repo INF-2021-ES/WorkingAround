@@ -6,15 +6,28 @@
             @foreach ($categories as $category)
                 <div class="col">
                     <div class="card h-100">
-                    <img src="img/{{$category->name}}.jpg" class="card-img-top" alt="...">
+                    <img src="img/{{$category->name}}.jpg" class="card-img-top" alt="..." id="cards">
                     <div class="card-body">
                         <h5 class="card-title">{{$category->name}}</h5>
                        
                         <a href='{{route('categories.show', $category->id)}}' class="btn btn-primary btn-lg btn-block">Show</a>
+                        
                     </div>
                     </div>
                 </div>
+                <br>
+                <br>
             @endforeach
         </div>
     </div>
 @endsection
+
+<style>
+    #cards{
+        height:220px;!important
+        width: 400px;!important
+
+    }
+
+
+</style>
