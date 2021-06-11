@@ -14,13 +14,13 @@
   <!-- The slideshow -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="img/cana.png" alt="plumber" id="img" class="center">
+      <img src="img/plumber_banner.jpg" alt="plumber_banner" id="img" class="center">
     </div>
     <div class="carousel-item">
-      <img src="img/carp2.jpg" alt="carpenter" id="img" class="center">
+      <img src="img/carpenter_banner.jpg" alt="carpenter_banner" id="img" class="center">
     </div>
     <div class="carousel-item">
-      <img src="img/cozinha2.jpg" alt="chefs" id="img" class="center">
+      <img src="img/kitchen_banner.jpg" alt="kitchen_banner" id="img" class="center">
     </div>
   </div>
 
