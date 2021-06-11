@@ -3,7 +3,36 @@
 @section('content')
   <div class="container my-4">
     <div class="d-flex justify-content-center center">
-        <a class="btn btn-primary btn-lg btn-block" href="{{route('service.create', $id)}}">+ Create Service</a>
+        @guest
+                <a href="{{route('login')}}" class="btn btn-primary btn-lg btn-block">Login to Create a Service</a>
+                @else
+                  @if (auth()->user()->can('reserve-service'))
+                  <a class="btn btn-primary btn-lg btn-block" href="{{route('service.create', $id)}}">+ Create Service</a>
+                  @else
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+                      + Create Service
+                    </button>
+                    <br>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                          </div>
+                          <div class="modal-body">
+                            Only clients can make reservations
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>          
+                  @endif         
+                @endguest
       </div>
   </div>
   <div class="container my-5 center">
