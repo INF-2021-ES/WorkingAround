@@ -14,9 +14,9 @@ class UserController extends Controller
 {
     public function indexPage()
     {
-        /*
+        
         $user = DB::table('users')->where('id', '=', Auth::id())->first();
-        return view('user.index', ['user' => $user]);*/
+        return view('user.index', ['user' => $user]);
     }
 
     // Create user
