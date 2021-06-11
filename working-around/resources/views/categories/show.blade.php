@@ -6,7 +6,7 @@
         @guest
                 <a href="{{route('login')}}" class="btn btn-primary btn-lg btn-block">Login to Create a Service</a>
                 @else
-                  @if (auth()->user()->can('reserve-service'))
+                  @if (auth()->user()->can('create-service'))
                   <a class="btn btn-primary btn-lg btn-block" href="{{route('service.create', $id)}}">+ Create Service</a>
                   @else
                     <!-- Button trigger modal -->
@@ -23,7 +23,7 @@
                             <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
                           </div>
                           <div class="modal-body">
-                            Only clients can make reservations
+                            Only Workers can create Services
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
