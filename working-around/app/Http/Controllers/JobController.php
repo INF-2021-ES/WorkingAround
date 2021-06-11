@@ -94,9 +94,20 @@ class JobController extends Controller
 
     public function showJob($id)
     {
-        $job = DB::table('job')->where('id', '=', $id)->first();
-        $client = DB::table('users')->where('id', '=', $job->clientId)->first();
-        $service = DB::table('service')->where('id', '=', $job->service_id)->first();
+        $job = DB::table('job')->select('job.clientId as clientid', 'job.service_id as serviceid')->where('id', '=', $id)->first();
+        $client = DB::table('users')->where('id', '=', $job->clientid)->first();
+        $service = DB::table('service')->where('id', '=', $job->serviceid)->first();
         return view('jobs.show', ['job' => $job, 'client' => $client, 'service' => $service]);
+    }
+
+
+    public function showClientReservation()
+    {
+        $check = DB::table('job')->where('clientId', '=', Auth::id())->first();
+        if ($check->accepted != null) {
+            $reservation = DB::table('job')->join('service', 'job.service_id', '=', 'service.id')->where('job.clientId', '=', Auth::id())->where('job.accepted', '=', false)->get();
+            return view('jobs.requests', ['reservations' => $reservation]);
+        }
+        return view('jobs.requests', ['reservations' => null]);
     }
 }

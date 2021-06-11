@@ -7,6 +7,7 @@
             <h2>My Jobs</h2>
         </div>
     </div>
+    
     <div class="col">
         <br/>
         @if ($jobs == null && $accepted == null)
@@ -71,10 +72,8 @@
                             <td>{{$job->price}}</td>
                             <td>
                                 <a class="btn btn-primary" href="{{route('job.show', $job->id)}}">Show</a>
-                                @can('create-service')
-                                        <a class="btn btn-success" href="{{route('job.accept', $job->id)}}">Accept</a>
-                                        <a class="btn btn-danger" href="{{route('job.decline', $job->id)}}">Decline</a>
-                                @endcan
+                                <a class="btn btn-success" href="{{route('job.accept', $job->id)}}">Accept</a>
+                                <a class="btn btn-danger" href="{{route('job.decline', $job->id)}}">Decline</a>
                             </td>
                         </tr>             
                 @endforeach

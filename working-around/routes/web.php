@@ -75,13 +75,15 @@ Route::match(['put', 'get'],'categories/{category}/service/{id}', [ServiceContro
 
 
 /*--------------   Jobs routes   ---------------*/
+Route::get('users/requests', [JobController::class, 'showClientReservation'])->name('requests.index');
+
 Route::get('user/jobs/', [JobController::class, 'indexPage'])->name('jobs.index');
 
 Route::get('user/jobs/{id}', [JobController::class, 'showJob'])->name('job.show');
 
 Route::match(['put', 'get'], 'user/jobs/{id}/accept', [JobController::class, 'acceptService'])->name('job.accept');
 
-Route::match(['put', 'delete'], '/user/jobs/{id}/decline', [JobController::class, 'declineService'])->name('job.decline');
+Route::match(['put', 'get'], '/user/jobs/{id}/decline', [JobController::class, 'declineService'])->name('job.decline');
 
 /*-------------------- Home --------------------*/
 Auth::routes();
