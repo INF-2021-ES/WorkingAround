@@ -36,7 +36,7 @@ class CreateCategorySeeder extends Seeder
 
         DB::table('category')->insert([
             'id' => 5,
-            'name' => 'Photographer'
+            'name' => 'Plumber'
         ]);
         
         DB::table('category')->insert([
