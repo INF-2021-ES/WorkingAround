@@ -44,7 +44,9 @@
         <p>Working Around start working with us now !</p>
       </div>
       <p class="lead">
-        <a class="btn btn-primary btn-lg center" href="{{route('categories.index')}}" role="button">Explore Categories</a>
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <a class="btn btn-primary btn-lg center" href="{{route('categories.index')}}" role="button">Explore Categories</a>
+        </div>
       </p>
     </div>
   </div>
