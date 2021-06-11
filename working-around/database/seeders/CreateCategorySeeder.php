@@ -16,27 +16,27 @@ class CreateCategorySeeder extends Seeder
     {
         DB::table('category')->insert([
             'id' => 1,
-            'name' => 'Electrician'
-        ]);
-
-        DB::table('category')->insert([
-            'id' => 2,
             'name' => 'Carpenter'
         ]);
 
         DB::table('category')->insert([
-            'id' => 3,
+            'id' => 2,
             'name' => 'Chef'
         ]);
 
         DB::table('category')->insert([
+            'id' => 3,
+            'name' => 'Electrician'
+        ]);
+
+        DB::table('category')->insert([
             'id' => 4,
-            'name' => 'Musician'
+            'name' => 'Gardener'
         ]);
 
         DB::table('category')->insert([
             'id' => 5,
-            'name' => 'Plumber'
+            'name' => 'Lawyer'
         ]);
         
         DB::table('category')->insert([
@@ -46,17 +46,17 @@ class CreateCategorySeeder extends Seeder
 
         DB::table('category')->insert([
             'id' => 7,
-            'name' => 'Teacher'
+            'name' => 'Musician'
         ]);
 
         DB::table('category')->insert([
             'id' => 8,
-            'name' => 'Lawyer'
+            'name' => 'Plumber'
         ]);
 
         DB::table('category')->insert([
             'id' => 9,
-            'name' => 'Gardener'
+            'name' => 'Teacher'
         ]);
     }
 }

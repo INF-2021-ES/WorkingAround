@@ -19,7 +19,7 @@ class CreateUserSeeder extends Seeder
         $user1 = User::create([
             'id' => 1,
             'name' => 'Miguel',
-            'email' => 'codemasters213@gmail.com',
+            'email' => 'a036389@ismai.pt',
             'password' => bcrypt('miguel'),
             'address' => 'Famalicao'
         ]);
@@ -28,7 +28,7 @@ class CreateUserSeeder extends Seeder
         $user2 = User::create([
             'id' => 2,
             'name' => 'Francisco',
-            'email' => 'francisco@ismai.pt',
+            'email' => 'a037284@ismai.pt',
             'password' => bcrypt('francisco'),
             'address' => 'Gaia'
         ]);
@@ -37,7 +37,7 @@ class CreateUserSeeder extends Seeder
         $user3 = User::create([
             'id' => 3,
             'name' => 'Ricardo',
-            'email' => 'ricardo@ismai.pt',
+            'email' => 'a037322@ismai.pt',
             'password' => bcrypt('ricardo'),
             'address' => 'Porto'
         ]);
@@ -46,7 +46,7 @@ class CreateUserSeeder extends Seeder
         $user4 = User::create([
             'id' => 4,
             'name' => 'Hugo',
-            'email' => 'hugo@ismai.pt',
+            'email' => 'a036537@ismai.pt',
             'password' => bcrypt('hugo'),
             'address' => 'Povoa'
         ]);
