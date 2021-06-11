@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('user.insert') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -75,7 +75,8 @@
                             <div class="col-md-6">
                                 <input id="roles" type="text" class="form-control" name="roles" required>
                             </div>
-                        --><div class="col-md-6">
+                        -->
+                        <div class="col-md-6">
                                 <select name="roles" class="form-select form-select-lg" aria-label=".form-select-lg example">
                                     <option value="client">Client</option>
                                     <option value="worker">Worker</option>

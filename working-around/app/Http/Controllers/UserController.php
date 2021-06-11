@@ -10,17 +10,19 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use Illuminate\Database\QueryException;
 class UserController extends Controller
 {
     public function indexPage()
     {
+        /*
         $user = DB::table('users')->where('id', '=', Auth::id())->first();
-        return view('user.index', ['user' => $user]);
+        return view('user.index', ['user' => $user]);*/
     }
+
     // Create user
     public function createPage()
     {
+
         $roles = Role::pluck('name', 'name')->all();
         return view('user.create', compact('roles')); // Shows the form for creating a new user
     }
@@ -29,17 +31,22 @@ class UserController extends Controller
     public function insert(Request $request)
     {
         $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
         
-        $user = User::create($input);
-        $role = strtolower($input['roles']);
-        if ($role == 'client') {
+        $user = User::create([
+            'name' => $input['name'],
+            'email' => $input['email'],
+            'password' => bcrypt($input['password']),
+            'address' => $input['address']
+        ]);
+        
+        if (strtolower($input['roles']) == 'client') {
             $user->assignRole('client');
         }
-        else {
-            $user->assignRole('worker');
+        elseif (strtolower($input['roles']) == 'worker') {
+            $user->assignRole('worker');        
         }
-        return redirect()->route('user.index')->with('success', 'User has been created successfully');
+        return redirect()->route('home');
+        
     }
 
     // Show User Edit page

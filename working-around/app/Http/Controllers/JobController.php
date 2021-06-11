@@ -71,7 +71,7 @@ class JobController extends Controller
             array('accepted' => true)
         );
         $serviceDb = DB::table('service')->where('id', '=', $service)->first();
-        
+
         $jobDb = DB::table('job')->where('id', '=', $job)->first();
         
         $service = new Service();
@@ -109,8 +109,8 @@ class JobController extends Controller
 
     public function showClientReservation()
     {
-        $check = DB::table('job')->where('clientId', '=', Auth::id())->first();
-        if ($check->clientId == Auth::id()) {
+        $check = DB::table('job')->where('clientId', '=', Auth::id())->exists();
+        if ($check) {
             $reservations = DB::table('job')->join('service', 'job.service_id', '=', 'service.id')->where('job.clientId', '=', Auth::id())->select('service.id as serviceID', 'job.id as jobID', 'service.description as Description', 'service.price as Price')->where('job.accepted', '=', false)->get();
             return view('jobs.requests', ['reservations' => $reservations]);
         }
