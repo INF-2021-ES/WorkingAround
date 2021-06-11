@@ -24,7 +24,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="d-flex flex-column h-100">
+<body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm" id="nav">
             <div class="container">
@@ -68,40 +68,23 @@
                 </div>
             </div>
         </nav>
-        <main id="main" class="flex-shrink-0">
+        <main id="main" class="min-vh-100">
             @yield('content')
         </main>
-        <footer class="footer bg-dark text-center text-white">
-            <div class="container p-4 pb-0">
-              <div class="d-flex justify-content-center">
-                <img src="/img/working_around_icon_round_login.png" width="75px" height="75px">
-                <div class="d-flex align-items-center">
-                  <h4 class="align-middle">Working Around</h4>
-                </div>
-              </div>
-            </div>
-            <div class="text-center p-3 mb-0" style="background-color: rgba(0, 0, 0, 0.2);">
-              <a class="text-white" href="https://workingaround.com/">workingaround.com</a>
-              © 2021 Copyright
-            </div>
-          </footer>
     </div>
+    <footer class="footer bg-dark text-center text-white">
+        <div class="container p-4 pb-0">
+          <div class="d-flex justify-content-center">
+            <img src="/img/working_around_icon_round_login.png" width="75px" height="75px">
+            <div class="d-flex align-items-center">
+              <h4 class="align-middle">Working Around</h4>
+            </div>
+          </div>
+        </div>
+        <div class="text-center p-3 mb-0" style="background-color: rgba(0, 0, 0, 0.2);">
+          <a class="text-white" href="https://workingaround.com/">workingaround.com</a>
+          © 2021 Copyright
+        </div>
+      </footer>
 </body>
 </html>
-
-<style>
-    #nav{
-        height: 80px;!important
-    }
-    #imgCima{
-        height: 50px;!important
-        width: 50px;!important
-        
-    }
-    #logo-container{
-        height: 50px;!important
-        width: 50px;!important
-        object-fit: fill;
-    }
-
-</style>
