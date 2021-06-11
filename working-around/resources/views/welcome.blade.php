@@ -61,10 +61,6 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
-  }
-  .cont{
-    width:1800px;!important
   }
   </style>
 @endsection

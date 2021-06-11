@@ -75,12 +75,13 @@
                             <div class="col-md-6">
                                 <input id="roles" type="text" class="form-control" name="roles" required>
                             </div>
-                        </div> -->
-
-                        <select name="roles" class="form-select form-select-sm" aria-label=".form-select-sm example">
-                            <option value="client">Client</option>
-                            <option value="worker">Worker</option>
-                        </select>
+                        --><div class="col-md-6">
+                                <select name="roles" class="form-select form-select-lg" aria-label=".form-select-lg example">
+                                    <option value="client">Client</option>
+                                    <option value="worker">Worker</option>
+                                </select>
+                            </div>
+                        </div> 
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
