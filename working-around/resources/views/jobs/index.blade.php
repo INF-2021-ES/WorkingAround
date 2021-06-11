@@ -24,10 +24,10 @@
                 </tr>
                 @foreach ($accepted as $job)                  
                     <tr>
-                        <td>{{$job->description}}</td>
-                        <td>{{$job->price}}</td>
+                        <td>{{$job->Description}}</td>
+                        <td>{{$job->Price}}</td>
                         <td>
-                            <a class="btn btn-primary" href="{{route('job.show', $job->id)}}">Show</a>
+                            <a class="btn btn-primary" href="{{route('job.show', $job->serviceID)}}">Show</a>
                         </td>
                     </tr>             
                 @endforeach            
@@ -44,13 +44,13 @@
                 </tr>
                 @foreach ($jobs as $job)         
                         <tr>
-                            <td>{{$job->description}}</td>
-                            <td>{{$job->price}}</td>
+                            <td>{{$job->Description}}</td>
+                            <td>{{$job->Price}}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{route('job.show', $job->id)}}">Show</a>
+                                <a class="btn btn-primary" href="{{route('job.show', $job->jobID)}}">Show</a>
                                 @can('create-service')
-                                        <a class="btn btn-success" href="{{route('job.accept', $job->id)}}">Accept</a>
-                                        <a class="btn btn-danger" href="{{route('job.decline', $job->id)}}">Decline</a>
+                                        <a class="btn btn-success" href="{{route('job.accept', ['id' => $job->serviceID, 'job' => $job->jobID])}}">Accept</a>
+                                        <a class="btn btn-danger" href="{{route('job.decline', $job->serviceID)}}">Decline</a>
                                 @endcan
                             </td>
                         </tr>              
@@ -68,12 +68,12 @@
                 </tr>
                 @foreach ($jobs as $job)                 
                         <tr>
-                            <td>{{$job->description}}</td>
-                            <td>{{$job->price}}</td>
+                            <td>{{$job->Description}}</td>
+                            <td>{{$job->Price}}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{route('job.show', $job->id)}}">Show</a>
-                                <a class="btn btn-success" href="{{route('job.accept', $job->id)}}">Accept</a>
-                                <a class="btn btn-danger" href="{{route('job.decline', $job->id)}}">Decline</a>
+                                <a class="btn btn-primary" href="{{route('job.show', $job->serviceID)}}">Show</a>
+                                <a class="btn btn-success" href="{{route('job.accept', ['id' => $job->serviceID, 'job' => $job->jobID])}}">Accept</a>
+                                <a class="btn btn-danger" href="{{route('job.decline', $job->serviceID)}}">Decline</a>
                             </td>
                         </tr>             
                 @endforeach
@@ -89,10 +89,10 @@
                 </tr>
                 @foreach ($accepted as $acceptedJob)              
                         <tr>
-                            <td>{{$acceptedJob->description}}</td>
-                            <td>{{$acceptedJob->price}}</td>
+                            <td>{{$acceptedJob->Description}}</td>
+                            <td>{{$acceptedJob->Price}}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{route('job.show', $acceptedJob->id)}}">Show</a>
+                                <a class="btn btn-primary" href="{{route('job.show', $acceptedJob->serviceID)}}">Show</a>
                             </td>
                         </tr>               
                 @endforeach            

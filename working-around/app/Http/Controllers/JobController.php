@@ -15,19 +15,20 @@ class JobController extends Controller
     public function indexPage()
     {
         if (JobController::hasJobs() && JobController::hasAcceptedJobs()) {
-            $toAccept = DB::table('job')->join('service', 'job.service_id', '=', 'service.id')->where('job.workerId', '=', Auth::id())->where('job.accepted', '=', false)->get();
-            $accepted = DB::table('job')->join('service', 'job.service_id', '=', 'service.id')->where('job.workerId', '=', Auth::id())->where('job.accepted', '=', true)->get();
+            $toAccept = DB::table('job')->join('service', 'job.service_id', '=', 'service.id')->where('job.workerId', '=', Auth::id())->where('job.accepted', '=', false)->select('service.id as serviceID', 'job.id as jobID', 'service.description as Description', 'service.price as Price')->get();
+            $accepted = DB::table('job')->join('service', 'job.service_id', '=', 'service.id')->where('job.workerId', '=', Auth::id())->where('job.accepted', '=', true)->select('service.id as serviceID', 'job.id as jobID', 'service.description as Description', 'service.price as Price')->get();
             return view('jobs.index', ['jobs' => $toAccept, 'accepted' => $accepted]);
         }
         elseif (JobController::hasJobs() && !JobController::hasAcceptedJobs()) {
-            $toAccept = DB::table('job')->join('service', 'job.service_id', '=', 'service.id')->where('job.workerId', '=', Auth::id())->where('job.accepted', '=', false)->get();
+            $toAccept = DB::table('job')->join('service', 'job.service_id', '=', 'service.id')->where('job.workerId', '=', Auth::id())->where('job.accepted', '=', false)->select('service.id as serviceID', 'job.id as jobID', 'service.description as Description', 'service.price as Price')->get();
             return view('jobs.index', ['jobs' => $toAccept, 'accepted' => null]);
         }
         elseif (JobController::hasAcceptedJobs() && !JobController::hasJobs()) {
-            $accepted = DB::table('job')->join('service', 'job.service_id', '=', 'service.id')->where('job.workerId', '=', Auth::id())->where('job.accepted', '=', true)->get();
+            $accepted = DB::table('job')->join('service', 'job.service_id', '=', 'service.id')->where('job.workerId', '=', Auth::id())->where('job.accepted', '=', true)->select('service.id as serviceID', 'job.id as jobID', 'service.description as Description', 'service.price as Price')->get();
             return view('jobs.index', ['jobs' => null, 'accepted' => $accepted]);
+        }else {           
+            return view('jobs.index', ['jobs' => null, 'accepted' => null]);
         }
-        return view('jobs.index', ['jobs' => null, 'accepted' => null]);
     }
 
     private static function hasAcceptedJobs()
@@ -37,7 +38,9 @@ class JobController extends Controller
             if ($valor->accepted) {
                 return true;
             }
-            return false; 
+            else {
+                return false; 
+            }
         } catch (\Throwable $th) {
             return false;
         }
@@ -49,15 +52,17 @@ class JobController extends Controller
             $valor = DB::table('job')->where('workerId', '=', Auth::id())->where('accepted', '=', false)->first(); // only needs at least one to return true 
             if (!$valor->accepted) {
                 return true;
-            }  
-            return false;   
+            }
+            else {
+                return false;   
+            }
         } catch (\Throwable $th) {
             return false;
         }
     }
 
     // As soon as the worker accepts the job, it must be hiden from the public 
-    public function acceptService($id)
+    public function acceptService($id, $job)
     {
         DB::table('service')->where('id', '=', $id)->update(
             array('reserved' => true)
@@ -66,18 +71,18 @@ class JobController extends Controller
             array('accepted' => true)
         );
         $serviceDb = DB::table('service')->where('id', '=', $id)->first();
+        $jobDb = DB::table('job')->where('id', '=', $job)->first();
         
         $service = new Service();
         $service->id = $serviceDb->id;
         $service->category_id = $serviceDb->category_id;
-        $service->worker_id = $serviceDb->worker_id;
+        $service->worker_id = Auth::id();
         $service->description = $serviceDb->description;
         $service->price = $serviceDb->price;
         $service->reserved = $serviceDb->reserved;
 
-        $job = DB::table('job')->where('id', '=', $id)->first();
-        $client = DB::table('users')->where('id', '=', $job->clientId)->first();
-        $worker = DB::table('users')->where('id', '=', $job->workerId)->first();
+        $client = DB::table('users')->where('id', '=', $jobDb->clientId)->first();
+        $worker = DB::table('users')->where('id', '=', Auth::id())->first();
         SendEmailController::sendEmail($service, $client->name, $client->email, $worker->name);
         return redirect()->route('jobs.index');
     }
@@ -94,9 +99,9 @@ class JobController extends Controller
 
     public function showJob($id)
     {
-        $job = DB::table('job')->select('job.clientId as clientid', 'job.service_id as serviceid')->where('id', '=', $id)->first();
-        $client = DB::table('users')->where('id', '=', $job->clientid)->first();
-        $service = DB::table('service')->where('id', '=', $job->serviceid)->first();
+        $job = DB::table('job')->where('id', '=', $id)->first();
+        $client = DB::table('users')->where('id', '=', $job->clientId)->first();
+        $service = DB::table('service')->where('id', '=', $job->service_id)->first();
         return view('jobs.show', ['job' => $job, 'client' => $client, 'service' => $service]);
     }
 
@@ -104,10 +109,12 @@ class JobController extends Controller
     public function showClientReservation()
     {
         $check = DB::table('job')->where('clientId', '=', Auth::id())->first();
-        if ($check->accepted != null) {
-            $reservation = DB::table('job')->join('service', 'job.service_id', '=', 'service.id')->where('job.clientId', '=', Auth::id())->where('job.accepted', '=', false)->get();
-            return view('jobs.requests', ['reservations' => $reservation]);
+        if ($check->clientId == Auth::id()) {
+            $reservations = DB::table('job')->join('service', 'job.service_id', '=', 'service.id')->where('job.clientId', '=', Auth::id())->select('service.id as serviceID', 'job.id as jobID', 'service.description as Description', 'service.price as Price')->where('job.accepted', '=', false)->get();
+            return view('jobs.requests', ['reservations' => $reservations]);
         }
-        return view('jobs.requests', ['reservations' => null]);
+        else {
+            return view('jobs.requests', ['reservations' => null]);
+        }
     }
 }

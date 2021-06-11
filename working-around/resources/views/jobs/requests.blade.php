@@ -21,10 +21,10 @@
                     </tr>
                     @foreach ($reservations as $reservation)                  
                         <tr>
-                            <td>{{$reservation->description}}</td>
-                            <td>{{$reservation->price}}</td>
+                            <td>{{$reservation->Description}}</td>
+                            <td>{{$reservation->Price}}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{route('job.show', $reservation->id)}}">Show</a>
+                                <a class="btn btn-primary" href="{{route('job.show', $reservation->serviceID)}}">Show</a>
                             </td>
                         </tr>             
                     @endforeach            
