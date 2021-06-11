@@ -27,7 +27,7 @@
                         <td>{{$job->Description}}</td>
                         <td>{{$job->Price}}</td>
                         <td>
-                            <a class="btn btn-primary" href="{{route('job.show', $job->serviceID)}}">Show</a>
+                            <a class="btn btn-primary" href="{{route('job.show', ['id' => $job->jobID])}}">Show</a>
                         </td>
                     </tr>             
                 @endforeach            
@@ -47,9 +47,9 @@
                             <td>{{$job->Description}}</td>
                             <td>{{$job->Price}}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{route('job.show', $job->jobID)}}">Show</a>
+                                <a class="btn btn-primary" href="{{route('job.show', ['id' => $job->jobID])}}">Show</a>
                                 @can('create-service')
-                                        <a class="btn btn-success" href="{{route('job.accept', ['id' => $job->serviceID, 'job' => $job->jobID])}}">Accept</a>
+                                        <a class="btn btn-success" href="{{route('job.accept', ['job' => $job->jobID, 'service' => $job->serviceID])}}">Accept</a>
                                         <a class="btn btn-danger" href="{{route('job.decline', $job->serviceID)}}">Decline</a>
                                 @endcan
                             </td>
@@ -71,8 +71,8 @@
                             <td>{{$job->Description}}</td>
                             <td>{{$job->Price}}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{route('job.show', $job->serviceID)}}">Show</a>
-                                <a class="btn btn-success" href="{{route('job.accept', ['id' => $job->serviceID, 'job' => $job->jobID])}}">Accept</a>
+                                <a class="btn btn-primary" href="{{route('job.show', ['id' => $job->jobID])}}">Show</a>
+                                <a class="btn btn-success" href="{{route('job.accept', ['job' => $job->jobID, 'service' => $job->serviceID])}}">Accept</a>
                                 <a class="btn btn-danger" href="{{route('job.decline', $job->serviceID)}}">Decline</a>
                             </td>
                         </tr>             
@@ -92,7 +92,7 @@
                             <td>{{$acceptedJob->Description}}</td>
                             <td>{{$acceptedJob->Price}}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{route('job.show', $acceptedJob->serviceID)}}">Show</a>
+                                <a class="btn btn-primary" href="{{route('job.show', ['id' => $job->jobID])}}">Show</a>
                             </td>
                         </tr>               
                 @endforeach            

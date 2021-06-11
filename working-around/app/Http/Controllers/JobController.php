@@ -62,15 +62,16 @@ class JobController extends Controller
     }
 
     // As soon as the worker accepts the job, it must be hiden from the public 
-    public function acceptService($id, $job)
+    public function acceptService($job, $service)
     {
-        DB::table('service')->where('id', '=', $id)->update(
+        DB::table('service')->where('id', '=', $service)->update(
             array('reserved' => true)
         );
-        DB::table('job')->where('service_id', '=', $id)->update(
+        DB::table('job')->where('service_id', '=', $service)->update(
             array('accepted' => true)
         );
-        $serviceDb = DB::table('service')->where('id', '=', $id)->first();
+        $serviceDb = DB::table('service')->where('id', '=', $service)->first();
+        
         $jobDb = DB::table('job')->where('id', '=', $job)->first();
         
         $service = new Service();

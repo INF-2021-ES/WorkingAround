@@ -24,7 +24,7 @@
                             <td>{{$reservation->Description}}</td>
                             <td>{{$reservation->Price}}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{route('job.show', $reservation->serviceID)}}">Show</a>
+                                <a class="btn btn-primary" href="{{route('job.show', ['id' => $reservation->jobID])}}">Show</a>
                             </td>
                         </tr>             
                     @endforeach            
