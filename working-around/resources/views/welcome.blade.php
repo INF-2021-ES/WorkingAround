@@ -14,13 +14,13 @@
   <!-- The slideshow -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="img/cana.png" alt="Los Angeles" id="img" class="center">
+      <img src="img/cana.png" alt="plumber" id="img" class="center">
     </div>
     <div class="carousel-item">
-      <img src="img/carp2.jpg" alt="Chicago" id="img" class="center">
+      <img src="img/carp2.jpg" alt="carpenter" id="img" class="center">
     </div>
     <div class="carousel-item">
-      <img src="img/cozinha2.jpg" alt="New York" id="img" class="center">
+      <img src="img/cozinha2.jpg" alt="chefs" id="img" class="center">
     </div>
   </div>
 
@@ -52,9 +52,10 @@
     #img{
       height:500px;
       width:1100px;
+      object-fit: cover;
     }
     #cont{
-      object-fit: none;
+      object-fit: cover;
     }
     .center {
     display: block;
